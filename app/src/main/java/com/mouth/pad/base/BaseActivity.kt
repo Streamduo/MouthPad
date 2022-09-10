@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
 import com.bmncc.pis.ylct.utils.*
+import com.mouth.pad.LoginActivity.Companion.isValidity
+import com.mouth.pad.LoginActivity.Companion.needLogin
 import com.mouth.pad.R
 import com.mouth.pad.utils.ActivityManager
 import com.mouth.pad.utils.AppUtils
@@ -28,25 +30,22 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        if (isValidity() && getActivityName(componentName.shortClassName) == "LoginActivity") {
-//            finish()
-//            return
-//        }
-//        onCreateTime = System.currentTimeMillis()
-//        ActivityManager.get().addActivity(this)
-//        setStatusBar()
-//        setContentView(layoutId())
-//        if (isNeedLogin()) {
-//            needLogin(this)
-//            if (!isValidity()) {
-//                return
-//            }
-//        }
+        if (isValidity() && getActivityName(componentName.shortClassName) == "LoginActivity") {
+            finish()
+            return
+        }
+        ActivityManager.get().addActivity(this)
+        setStatusBar()
+        setContentView(layoutId())
+        if (isNeedLogin()) {
+            needLogin(this)
+            if (!isValidity()) {
+                return
+            }
+        }
         initData()
         initView()
         start()
-        Logger.e("lastActName=" + getActivityName(ActivityManager.get().getLastActivityName()) +
-                "currentActivity=" + getActivityName(componentName.shortClassName))
     }
 
     override fun onStop() {

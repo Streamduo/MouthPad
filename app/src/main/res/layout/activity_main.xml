@@ -1,19 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_text_f8"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include layout="@layout/layout_title" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_105"
+        android:background="@color/color_1876FF">
+
+        <ImageView
+            android:id="@+id/img_user_head"
+            android:layout_width="@dimen/distance_dp_50"
+            android:layout_height="@dimen/distance_dp_50"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/distance_dp_23"
+            android:background="@mipmap/icon_default_user_head" />
+
+        <TextView
+            android:id="@+id/te_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/distance_dp_23"
+            android:layout_toEndOf="@+id/img_user_head"
+            android:gravity="center_vertical"
+            android:text="@string/please_login"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/distance_dp_15" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/distance_dp_10"
+        android:background="@drawable/shape_bg_white_round"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_laid_up"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginStart="@dimen/distance_dp_10"
+            android:drawableEnd="@mipmap/icon_black_return"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/distance_dp_10"
+            android:text="物资入库"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_18" />
+
+        <TextView
+            android:id="@+id/te_inventory_query"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginStart="@dimen/distance_dp_10"
+            android:drawableEnd="@mipmap/icon_black_return"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/distance_dp_10"
+            android:text="库存查询"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_18" />
+
+        <TextView
+            android:id="@+id/te_material_requisition"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginStart="@dimen/distance_dp_10"
+            android:drawableEnd="@mipmap/icon_black_return"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/distance_dp_10"
+            android:text="物资请领"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_18" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/distance_dp_10"
+        android:background="@drawable/shape_bg_white_round"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_consumption_query"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginStart="@dimen/distance_dp_10"
+            android:drawableEnd="@mipmap/icon_black_return"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/distance_dp_10"
+            android:text="消耗查询"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_18" />
+
+        <TextView
+            android:id="@+id/te_order_manager"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_marginStart="@dimen/distance_dp_10"
+            android:drawableEnd="@mipmap/icon_black_return"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/distance_dp_10"
+            android:text="订单管理"
+            android:textColor="@color/app_text_33"
+            android:textSize="@dimen/distance_dp_18" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/te_login_out"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_45"
+        android:layout_marginStart="@dimen/distance_dp_10"
+        android:layout_marginEnd="@dimen/distance_dp_10"
+        android:background="@drawable/shape_bg_white_round"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/login_out"
+        android:textColor="@color/app_text_99" />
+</LinearLayout>
