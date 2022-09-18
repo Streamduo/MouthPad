@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.mouth.pad.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_inventory_query.*
 import kotlinx.android.synthetic.main.layout_title.*
 
 class InventoryQueryActivity : BaseActivity() {
@@ -21,6 +22,9 @@ class InventoryQueryActivity : BaseActivity() {
         tv_title.text = "库存查询"
         title_back.setOnSingleClickListener {
             finish()
+        }
+        te_query.setOnSingleClickListener {
+
         }
     }
 
@@ -47,5 +51,5 @@ class InventoryQueryActivity : BaseActivity() {
         }
 
     }
-    
+
 }

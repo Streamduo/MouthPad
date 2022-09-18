@@ -66,7 +66,7 @@ dependencies {
     implementation 'com.jeremyliao:live-event-bus-x:1.5.7'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     implementation 'com.tencent:mmkv-static:1.2.6'
-//    implementation 'com.github.maning0303:MNProgressHUD:V1.1.2'
+    implementation 'com.guolindev.permissionx:permissionx:1.6.4'
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
@@ -90,4 +90,5 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    api project(':libzxing')
 }

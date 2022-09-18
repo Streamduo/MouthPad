@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.mouth.pad.base.BaseActivity
-import kotlinx.android.synthetic.main.layout_title.*
+import kotlinx.android.synthetic.main.activity_material_requisition.*
+import kotlinx.android.synthetic.main.layout_title_subtitle.*
 
+//物资请领
 class MaterialRequisitionActivity : BaseActivity() {
 
     override fun layoutId(): Int {
@@ -19,8 +21,22 @@ class MaterialRequisitionActivity : BaseActivity() {
 
     override fun initView() {
         tv_title.text = "物资请领"
+        tv_subtitle.text = "记录查询"
         title_back.setOnSingleClickListener {
             finish()
+        }
+        tv_subtitle.setOnSingleClickListener {
+            MaterialRequisitionRecordActivity.launchMaterialRequisitionRecordActivity(this)
+        }
+        te_add.setOnSingleClickListener {
+
+        }
+        te_delete.setOnSingleClickListener {
+
+        }
+        //发送
+        te_send.setOnSingleClickListener {
+
         }
     }
 

@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.mouth.pad.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_consumption_query.*
 import kotlinx.android.synthetic.main.layout_title.*
 
+//消耗查询
 class ConsumptionQueryActivity : BaseActivity() {
 
     override fun layoutId(): Int {
@@ -22,6 +24,9 @@ class ConsumptionQueryActivity : BaseActivity() {
         tv_title.text = "消耗查询"
         title_back.setOnSingleClickListener {
             finish()
+        }
+        te_query.setOnSingleClickListener {
+
         }
     }
 

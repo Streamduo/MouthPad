@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.mouth.pad.base.BaseActivity
-import kotlinx.android.synthetic.main.layout_title.*
+import kotlinx.android.synthetic.main.activity_order_manager.*
+import kotlinx.android.synthetic.main.layout_title_subtitle.*
 
+//订单管理
 class OrderManagerActivity : BaseActivity() {
 
     override fun layoutId(): Int {
@@ -22,6 +24,21 @@ class OrderManagerActivity : BaseActivity() {
         title_back.setOnSingleClickListener {
             finish()
         }
+        tv_subtitle.text = "跟踪管理"
+        tv_subtitle.setOnSingleClickListener {
+
+        }
+        te_add.setOnSingleClickListener {
+
+        }
+        te_delete.setOnSingleClickListener {
+
+        }
+        //发送
+        te_send.setOnSingleClickListener {
+
+        }
+
     }
 
     override fun start() {

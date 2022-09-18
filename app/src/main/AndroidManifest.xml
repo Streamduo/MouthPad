@@ -21,6 +21,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".TrackingManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MaterialRequisitionRecordActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="3.2" />
+
+        <activity
             android:name=".OrderManagerActivity"
             android:exported="true"
             android:screenOrientation="portrait" />

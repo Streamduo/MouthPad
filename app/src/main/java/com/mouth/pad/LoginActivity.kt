@@ -216,6 +216,7 @@ class LoginActivity : BaseActivity() {
             context?.let { con ->
                 con.startActivity(Intent(con, LoginActivity::class.java).apply {
                 })
+                (con as Activity).finish()
             }
         }
     }

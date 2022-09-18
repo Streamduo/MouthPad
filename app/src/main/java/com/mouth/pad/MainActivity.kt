@@ -25,10 +25,6 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-        title_back.visibility = View.GONE
-        title_menu.visibility = View.GONE
-        tv_title.text = getString(R.string.app_name)
-
         //登录
         te_user_name.setOnSingleClickListener {
             if (!LoginActivity.isValidity()){
