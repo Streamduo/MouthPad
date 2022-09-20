@@ -319,7 +319,7 @@
                     android:id="@+id/text_order_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="材料        "
+                    android:text="材料"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 

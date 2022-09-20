@@ -219,5 +219,11 @@ class LoginActivity : BaseActivity() {
                 (con as Activity).finish()
             }
         }
+        fun toLogin2(context: Context?) {
+            context?.let { con ->
+                con.startActivity(Intent(con, LoginActivity::class.java).apply {
+                })
+            }
+        }
     }
 }

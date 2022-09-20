@@ -26,7 +26,7 @@ class OrderManagerActivity : BaseActivity() {
         }
         tv_subtitle.text = "跟踪管理"
         tv_subtitle.setOnSingleClickListener {
-
+            TrackingManagementActivity.launchTrackingManagementActivity(this)
         }
         te_add.setOnSingleClickListener {
 

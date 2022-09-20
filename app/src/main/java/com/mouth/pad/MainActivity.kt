@@ -28,7 +28,7 @@ class MainActivity : BaseActivity() {
         //登录
         te_user_name.setOnSingleClickListener {
             if (!LoginActivity.isValidity()){
-                LoginActivity.toLogin(this)
+                LoginActivity.toLogin2(this)
             }
         }
         //物资入库
