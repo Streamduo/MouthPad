@@ -1,21 +1,29 @@
 package com.mouth.pad.api
 
 
+import com.mouth.pad.bean.TMaterial
+import com.mouth.pad.bean.TOrderQueryListBean
 import com.mouth.pad.net.HttpsCerUtils
 import com.mouth.pad.utils.Logger
 import io.reactivex.schedulers.Schedulers
-import okhttp3.OkHttpClient
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.*
+import java.net.URLDecoder
 import java.util.concurrent.TimeUnit
+import okhttp3.RequestBody
+import okio.Buffer
+import java.lang.Exception
 
 
 interface ApiService {
 
     companion object {
-        const val URL_LOGOUT = "bjtt-subway-member/api/member/logout"
+        private const val baseUrl = "http://47.94.37.16:8099"
 
         fun get(): ApiService = mApiService
         private const val DEFAULT_TIME_OUT = 60L //超时时间 5s
@@ -25,9 +33,7 @@ interface ApiService {
             val builder = OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
-//                .addInterceptor(addHeaderInterceptor())
                 .addInterceptor(addLogInterceptor())
-//                    .addInterceptor(GlobalResponseInterceptor())
             HttpsCerUtils.setTrustAllCertificate(builder)
             builder.build()
         }
@@ -37,7 +43,7 @@ interface ApiService {
         private val mApiService by lazy {
             Retrofit.Builder()
                 .client(mOkHttpClient)
-                .baseUrl("BuildConfig.API_HOST")
+                .baseUrl(baseUrl)
                 .addConverterFactory(mGsonConverterFactory)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .addConverterFactory(GsonConverterFactory.create())
@@ -59,40 +65,30 @@ interface ApiService {
     }
 
 
-//
-//    /**
-//     * 运营动态和回音台
-//     */
-//    @GET("bjtt-subway-app/api/article/home/listMC")
-//    fun getListMC(@Query("columnType") columnType: String?): Call<Result<MutableList<HomeDynamicAndEchoBean>>>
-//
-//    /**
-//     * 获取运营动态/回音台列表 分页
-//     */
-//    @GET("bjtt-subway-app/api/article/home/listMC")
-//    fun getDynamicEchoList(
-//        @Query("columnType") columnType: String?,
-//        @Query("start") pageIndex: Int,
-//        @Query("limit") limit: Int
-//    ): Call<Result<MutableList<HomeDynamicAndEchoBean>>>
-//
-//    /**
-//     * 上报文案已读
-//     */
-//    @POST("bjtt-subway-member/api/status/memberBusinessContentState")
-//    fun memberBusinessContentState(@Body params: MutableMap<String, Any?>): Call<Result<String>>
-//
-//    /**
-//     * 健康宝文案查询接口
-//     */
-//    @GET("bjtt-subway-member/api/status/memberBusinessContent")
-//    fun memberBusinessContent(): Call<Result<CodeHealthBean>>
-//
-//    /**
-//     * 健康码状态
-//     */
-//    @POST("bjtt-subway-member/api/QRCode/healthCodeVerify")
-//    fun healthCodeVerify(): Call<Result<HealthInfoStatus>>
+    /**
+     * 根据材料编号查询-材料基本信息
+     */
+    @GET("/tMaterial/selectByMaterialCode")
+    fun selectByMaterialCode(@Query("materialCode") materialCode: String?): Call<Result<TMaterial>>
+
+    /**
+     * 新增订单
+     */
+    @POST("/tOrder/insert")
+    fun insertOrder(@Body params: RequestBody): Call<Result<String>>
+
+    /**
+     * 查询全部订单
+     */
+    @GET("/tOrder/getAll")
+    fun getAllOrder(): Call<Result<MutableList<TOrderQueryListBean>>>
+
+    /**
+     * 删除订单
+     */
+    @POST("/tOrder/deleteBatchIds")
+    fun deleteOrder(@Body params: RequestBody): Call<Result<String>>
+
 }
 
 

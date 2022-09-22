@@ -74,7 +74,7 @@ object TimeUtils {
     }
 
     fun getYear(date: Date): String? {
-        val format = SimpleDateFormat(TIME_YYYY_MM_DD)
+        val format = SimpleDateFormat(TIME_YYYY_MM_DD_HH_MM)
         return format.format(date)
     }
 

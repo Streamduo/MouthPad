@@ -20,12 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".TrackingManagementActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MaterialRequisitionRecordActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="android.max_aspect"
@@ -33,28 +27,31 @@
 
         <activity
             android:name=".OrderManagerActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="true" />
         <activity
             android:name=".ConsumptionQueryActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="true" />
         <activity
             android:name=".MaterialRequisitionActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="true" />
         <activity
             android:name=".InventoryQueryActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="true" />
         <activity
             android:name=".LaidUpActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:exported="true" />
+        <activity
+            android:name=".VerticalListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TrackingManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MaterialRequisitionRecordActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.mouth.pad.utils.HttpsGlideModule"

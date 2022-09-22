@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     implementation 'com.tencent:mmkv-static:1.2.6'
     implementation 'com.guolindev.permissionx:permissionx:1.6.4'
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'

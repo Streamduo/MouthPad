@@ -14,4 +14,22 @@
     <string name="password_null">密码不能为空</string>
     <string name="login_out">退出登录</string>
 
+    <string-array name="department">
+        <item>特需特诊科</item>
+        <item>牙体牙髓病科</item>
+        <item>儿童口腔科</item>
+        <item>口腔正畸科</item>
+        <item>口腔种植科</item>
+        <item>口腔颌面外科（门诊）</item>
+        <item>口腔颌面外科（门诊）-口腔颌面外科门诊</item>
+    </string-array>
+    <string-array name="departmentCode">
+        <item>1001</item>
+        <item>1002</item>
+        <item>1003</item>
+        <item>1004</item>
+        <item>1005</item>
+        <item>1006</item>
+        <item>100601</item>
+    </string-array>
 </resources>
