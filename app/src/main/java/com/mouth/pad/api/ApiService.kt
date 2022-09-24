@@ -2,6 +2,7 @@ package com.mouth.pad.api
 
 
 import com.mouth.pad.bean.TMaterial
+import com.mouth.pad.bean.TMaterialQueryListBean
 import com.mouth.pad.bean.TOrderQueryListBean
 import com.mouth.pad.net.HttpsCerUtils
 import com.mouth.pad.utils.Logger
@@ -88,6 +89,30 @@ interface ApiService {
      */
     @POST("/tOrder/deleteBatchIds")
     fun deleteOrder(@Body params: RequestBody): Call<Result<String>>
+
+    /**
+     * 审核订单
+     */
+    @POST("/tOrder/approval")
+    fun approvalOrder(@Body params: RequestBody): Call<Result<String>>
+
+    /**
+     * 新增-入库信息
+     */
+    @POST("/tReceipt/insert")
+    fun insertStorehouse(@Body params: RequestBody): Call<Result<String>>
+
+    /**
+     * 查询全部入库信息
+     */
+    @GET("/tReceipt/getAll")
+    fun getAllStorehouse(): Call<Result<MutableList<TMaterialQueryListBean>>>
+
+    /**
+     * 审核入库
+     */
+    @POST("/tReceipt/approval")
+    fun approvalStorehouse(@Body params: RequestBody): Call<Result<String>>
 
 }
 

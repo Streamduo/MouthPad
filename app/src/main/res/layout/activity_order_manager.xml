@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/distance_dp_10"
             android:layout_weight="1"
-            android:text="查询"/>
+            android:text="查询" />
 
         <TextView
             android:id="@+id/te_delete"
@@ -42,16 +42,27 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/distance_dp_10"
             android:layout_weight="1"
-            android:text="删除"/>
+            android:text="删除" />
+
+        <TextView
+            android:id="@+id/te_verify"
+            style="@style/CurrentText"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/distance_dp_10"
+            android:layout_weight="1"
+            android:text="审核" />
 
         <TextView
             android:id="@+id/te_send"
             style="@style/CurrentText"
             android:layout_width="0dp"
-            android:layout_marginStart="@dimen/distance_dp_10"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/distance_dp_10"
             android:layout_weight="1"
-            android:text="发送" />
+            android:text="发送"
+            android:visibility="gone"
+            tools:visibility="visible" />
     </LinearLayout>
 
     <TextView
@@ -81,26 +92,26 @@
         tools:visibility="visible">
 
 
-<!--        <TextView-->
-<!--            android:id="@+id/te_material_name"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignStart="@+id/te_warehouse"-->
-<!--            android:layout_alignEnd="@+id/te_warehouse"-->
-<!--            android:layout_marginTop="@dimen/distance_dp_15"-->
-<!--            android:text="日期"-->
-<!--            android:textColor="@color/app_text_33"-->
-<!--            android:textSize="@dimen/distance_dp_15" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/te_material_name"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignStart="@+id/te_warehouse"-->
+        <!--            android:layout_alignEnd="@+id/te_warehouse"-->
+        <!--            android:layout_marginTop="@dimen/distance_dp_15"-->
+        <!--            android:text="日期"-->
+        <!--            android:textColor="@color/app_text_33"-->
+        <!--            android:textSize="@dimen/distance_dp_15" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/te_claim_date"-->
-<!--            android:layout_width="@dimen/distance_dp_150"-->
-<!--            android:layout_height="@dimen/distance_dp_30"-->
-<!--            android:layout_marginStart="@dimen/distance_dp_10"-->
-<!--            android:layout_marginTop="@dimen/distance_dp_10"-->
-<!--            android:layout_toEndOf="@+id/te_material_name"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:hint="请选择日期" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/te_claim_date"-->
+        <!--            android:layout_width="@dimen/distance_dp_150"-->
+        <!--            android:layout_height="@dimen/distance_dp_30"-->
+        <!--            android:layout_marginStart="@dimen/distance_dp_10"-->
+        <!--            android:layout_marginTop="@dimen/distance_dp_10"-->
+        <!--            android:layout_toEndOf="@+id/te_material_name"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:hint="请选择日期" />-->
 
         <TextView
             android:id="@+id/te_storehouse"
@@ -118,9 +129,9 @@
             android:layout_width="@dimen/distance_dp_200"
             android:layout_height="@dimen/distance_dp_30"
             android:layout_marginStart="@dimen/distance_dp_10"
-            android:spinnerMode="dialog"
             android:layout_toEndOf="@+id/te_storehouse"
-            android:entries="@array/department" />
+            android:entries="@array/department"
+            android:spinnerMode="dialog" />
 
 
         <TextView
@@ -183,6 +194,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_order_list"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:overScrollMode="never"
-        android:layout_height="match_parent" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 </LinearLayout>

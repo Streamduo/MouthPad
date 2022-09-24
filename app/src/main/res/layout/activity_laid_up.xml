@@ -13,8 +13,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/distance_dp_35"
-        android:layout_marginTop="@dimen/distance_dp_15"
         android:layout_marginStart="@dimen/distance_dp_10"
+        android:layout_marginTop="@dimen/distance_dp_15"
         android:layout_marginEnd="@dimen/distance_dp_10"
         android:orientation="horizontal">
 
@@ -34,9 +34,7 @@
             android:layout_marginStart="@dimen/distance_dp_10"
             android:layout_marginEnd="@dimen/distance_dp_10"
             android:layout_weight="1"
-            android:text="删除"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:text="删除" />
 
         <TextView
             android:id="@+id/te_save"
@@ -55,9 +53,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="审核"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:text="审核" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -73,6 +69,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/te_head"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/distance_dp_20"
@@ -83,7 +80,7 @@
                 tools:visibility="visible" />
 
             <RelativeLayout
-                android:id="@+id/rl_commodity_detail"
+                android:id="@+id/rl_haed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/distance_dp_10"
@@ -96,156 +93,104 @@
                 tools:visibility="visible">
 
                 <TextView
-                    android:id="@+id/text_commodity_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/text_commodity_all_price"
-                    android:layout_alignEnd="@+id/text_commodity_all_price"
-                    android:text="入库单号"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
-
-                <TextView
-                    android:id="@+id/te_receipt_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_toEndOf="@+id/text_commodity_name"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="6456465465456456" />
-
-                <TextView
                     android:id="@+id/text_unit_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_commodity_name"
-                    android:layout_alignStart="@+id/text_commodity_all_price"
-                    android:layout_alignEnd="@+id/text_commodity_all_price"
+                    android:layout_alignStart="@+id/text_ticket_station"
+                    android:layout_alignEnd="@+id/text_ticket_station"
                     android:layout_marginTop="@dimen/distance_dp_5"
                     android:gravity="start"
                     android:text="业务类型"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 
-                <TextView
-                    android:id="@+id/te_business_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_commodity_name"
+                <Spinner
+                    android:id="@+id/sp_business_type"
+                    android:layout_width="@dimen/distance_dp_100"
+                    android:layout_height="@dimen/distance_dp_30"
                     android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_unit_price"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="扫码" />
+                    android:layout_toEndOf="@+id/text_unit_price" />
 
                 <TextView
                     android:id="@+id/text_commodity_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_unit_price"
-                    android:layout_alignStart="@+id/text_commodity_all_price"
-                    android:layout_alignEnd="@+id/text_commodity_all_price"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_alignStart="@+id/text_ticket_station"
+                    android:layout_alignEnd="@+id/text_ticket_station"
+                    android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
                     android:text="仓库"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 
-                <TextView
-                    android:id="@+id/te_storehouse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Spinner
+                    android:id="@+id/sp_storehouse"
+                    android:layout_width="@dimen/distance_dp_150"
+                    android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_unit_price"
                     android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_10"
                     android:layout_toEndOf="@+id/text_commodity_num"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="3" />
+                    android:entries="@array/storehouse"
+                    android:spinnerMode="dialog" />
 
                 <TextView
                     android:id="@+id/text_commodity_all_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_commodity_num"
-                    android:layout_alignStart="@+id/text_ticket_method"
-                    android:layout_alignEnd="@+id/text_ticket_method"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_alignStart="@+id/text_ticket_station"
+                    android:layout_alignEnd="@+id/text_ticket_station"
+                    android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
                     android:text="科室"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 
-                <TextView
-                    android:id="@+id/te_department"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Spinner
+                    android:id="@+id/sp_department"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_commodity_num"
                     android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_10"
                     android:layout_toEndOf="@+id/text_commodity_all_price"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="1" />
+                    android:entries="@array/department"
+                    android:spinnerMode="dialog" />
 
-                <TextView
-                    android:id="@+id/text_ticket_method"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_commodity_all_price"
-                    android:layout_alignStart="@+id/text_ticket_station"
-                    android:layout_alignEnd="@+id/text_ticket_station"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:gravity="start"
-                    android:text="入库日期"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
-
-                <TextView
-                    android:id="@+id/te_inventory_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_commodity_all_price"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_ticket_method"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="2022.02.23" />
 
                 <TextView
                     android:id="@+id/text_ticket_station"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_ticket_method"
-                    android:layout_alignStart="@+id/text_commodity_specifications"
-                    android:layout_alignEnd="@+id/text_commodity_specifications"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_below="@+id/text_commodity_all_price"
+                    android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
                     android:text="供货单位"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 
-                <TextView
+                <EditText
                     android:id="@+id/te_delivery_unit"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_ticket_method"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_commodity_all_price"
                     android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_10"
                     android:layout_toEndOf="@+id/text_ticket_station"
+                    android:background="@color/color_white"
+                    android:hint="请输入供货单位"
+                    android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="1号线西单站" />
+                    android:textSize="@dimen/distance_dp_12" />
 
                 <TextView
                     android:id="@+id/text_ticket_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_ticket_station"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
                     android:text="发票日期"
                     android:textColor="@color/app_text_99"
@@ -254,14 +199,16 @@
                 <TextView
                     android:id="@+id/te_invoice_date"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_ticket_station"
                     android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_10"
                     android:layout_toEndOf="@+id/text_ticket_time"
+                    android:gravity="center_vertical"
+                    android:hint="请选择发票日期"
+                    android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="2022-01-17" />
+                    android:textSize="@dimen/distance_dp_12" />
 
                 <TextView
                     android:id="@+id/text_commodity_specifications"
@@ -270,23 +217,25 @@
                     android:layout_below="@+id/text_ticket_time"
                     android:layout_alignStart="@+id/text_ticket_time"
                     android:layout_alignEnd="@+id/text_ticket_time"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
                     android:text="发票号"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 
-                <TextView
+                <EditText
                     android:id="@+id/te_receipt_number"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_ticket_time"
                     android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:layout_marginTop="@dimen/distance_dp_10"
                     android:layout_toEndOf="@+id/text_commodity_specifications"
+                    android:background="@color/color_white"
+                    android:hint="请输入发票号"
+                    android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="41354635413" />
+                    android:textSize="@dimen/distance_dp_12" />
 
 
             </RelativeLayout>
@@ -302,169 +251,13 @@
                 android:visibility="gone"
                 tools:visibility="visible" />
 
-            <RelativeLayout
-                android:id="@+id/rl_order_detail"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_order_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/distance_dp_10"
-                android:background="@drawable/shape_bg_white_round_radius5"
-                android:paddingStart="@dimen/distance_dp_15"
-                android:paddingTop="@dimen/distance_dp_10"
-                android:paddingEnd="@dimen/distance_dp_15"
-                android:paddingBottom="@dimen/distance_dp_10"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
                 android:visibility="gone"
-                tools:visibility="visible">
-
-                <TextView
-                    android:id="@+id/text_order_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="材料"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
-
-                <TextView
-                    android:id="@+id/te_material"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_toEndOf="@+id/text_order_num"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="1234567987979070889" />
-
-                <TextView
-                    android:id="@+id/text_order_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_order_num"
-                    android:layout_alignStart="@+id/text_order_num"
-                    android:layout_alignEnd="@+id/text_order_num"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:gravity="start"
-                    android:text="规格"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
-
-                <TextView
-                    android:id="@+id/te_specification"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_order_num"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_order_time"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="8" />
-
-                <TextView
-                    android:id="@+id/text_pay_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_order_time"
-                    android:layout_alignStart="@+id/text_order_time"
-                    android:layout_alignEnd="@+id/text_order_time"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:gravity="start"
-                    android:text="型号"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/te_model"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_order_time"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_pay_type"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="医疗器械" />
-
-                <TextView
-                    android:id="@+id/text_pay_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_pay_type"
-                    android:layout_alignStart="@+id/text_pay_type"
-                    android:layout_alignEnd="@+id/text_pay_type"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:gravity="start"
-                    android:text="数量"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/te_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_pay_type"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_pay_time"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="1" />
-
-                <TextView
-                    android:id="@+id/text_refund_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_pay_time"
-                    android:layout_alignStart="@+id/text_pay_time"
-                    android:layout_alignEnd="@+id/text_pay_time"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:gravity="start"
-                    android:text="单价"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
-
-                <TextView
-                    android:id="@+id/te_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_pay_time"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_refund_date"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="20" />
-
-                <TextView
-                    android:id="@+id/text_refund_result"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_refund_date"
-                    android:layout_alignStart="@+id/text_refund_date"
-                    android:layout_alignEnd="@+id/text_refund_date"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:gravity="start"
-                    android:text="金额"
-                    android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
-
-                <TextView
-                    android:id="@+id/te_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text_refund_date"
-                    android:layout_marginStart="@dimen/distance_dp_20"
-                    android:layout_marginTop="@dimen/distance_dp_5"
-                    android:layout_toEndOf="@+id/text_refund_result"
-                    android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12"
-                    tools:text="20" />
-
-            </RelativeLayout>
+                tools:visibility="visible" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

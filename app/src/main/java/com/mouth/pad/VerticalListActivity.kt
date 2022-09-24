@@ -7,7 +7,10 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.mouth.pad.adapter.OrderQueryListAdapter
+import com.mouth.pad.adapter.WarehouseQueryListAdapter
+import com.mouth.pad.adapter.WarehouseStuffListAdapter
 import com.mouth.pad.base.BaseActivity
+import com.mouth.pad.view.CurrencyDialog
 import kotlinx.android.synthetic.main.activity_vertical_list.*
 
 class VerticalListActivity : BaseActivity() {
@@ -19,6 +22,10 @@ class VerticalListActivity : BaseActivity() {
 
     private val orderQueryListAdapter by lazy {
         OrderQueryListAdapter(R.layout.item_query_order_list)
+    }
+
+    private val warehouseQueryListAdapter by lazy {
+        WarehouseQueryListAdapter(R.layout.item_query_warehouse_list)
     }
 
     override fun layoutId(): Int {
@@ -47,11 +54,76 @@ class VerticalListActivity : BaseActivity() {
                 orderQueryListAdapter.addChildClickViewIds(R.id.te_delete)
                 getAllOrder()
             }
+            2 -> {//订单查询&审核
+                te_title.text = "订单审核"
+                rv_vertical.adapter = orderQueryListAdapter
+                orderQueryListAdapter.isCheck = true
+                orderQueryListAdapter.addChildClickViewIds(R.id.te_check)
+                getAllOrder()
+            }
+            3 -> {//入库信息查询&删除
+                te_title.text = "入库删除"
+                rv_vertical.adapter = warehouseQueryListAdapter
+                warehouseQueryListAdapter.isDelete = true
+                warehouseQueryListAdapter.addChildClickViewIds(R.id.te_delete)
+                getAllStorehouse()
+            }
+            4 -> {//入库信息查询&审核
+                te_title.text = "入库审核"
+                rv_vertical.adapter = warehouseQueryListAdapter
+                warehouseQueryListAdapter.isCheck = true
+                warehouseQueryListAdapter.addChildClickViewIds(R.id.te_check)
+                getAllStorehouse()
+            }
+
         }
         orderQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = orderQueryListAdapter.getItem(position)
-            if (view.id == R.id.te_delete) {
-                deleteOrder(item.orderNo, position)
+            when(view.id){
+                R.id.te_delete -> {
+                    deleteOrder(item.id, position)
+                }
+                R.id.te_check -> {
+                    val currencyDialog = CurrencyDialog()
+                    currencyDialog.showDialog(this,"是否审核？","取消","同意")
+                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                        override fun onLeftClick() {
+                            currencyDialog.dialog.dismiss()
+                        }
+
+                        override fun onRightClick() {
+                            currencyDialog.dialog.dismiss()
+                            approvalOrder(item.id, position)
+                        }
+
+                    })
+
+                }
+            }
+        }
+
+        warehouseQueryListAdapter.setOnItemChildClickListener { _, view, position ->
+            val item = warehouseQueryListAdapter.getItem(position)
+            when(view.id){
+                R.id.te_delete -> {
+                    deleteOrder(item.id, position)
+                }
+                R.id.te_check -> {
+                    val currencyDialog = CurrencyDialog()
+                    currencyDialog.showDialog(this,"是否审核？","取消","同意")
+                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                        override fun onLeftClick() {
+                            currencyDialog.dialog.dismiss()
+                        }
+
+                        override fun onRightClick() {
+                            currencyDialog.dialog.dismiss()
+                            approvalStorehouse(item.id, position)
+                        }
+
+                    })
+
+                }
             }
         }
     }
@@ -77,6 +149,49 @@ class VerticalListActivity : BaseActivity() {
             if (it.isOk()) {
                 orderQueryListAdapter.removeAt(position)
                 showToast("删除成功")
+            } else {
+                it.msg?.let { msg ->
+                    showToast(msg)
+                }
+            }
+        })
+    }
+
+    //审核订单
+    private fun approvalOrder(orderId: String?, position: Int) {
+        allNetViewModel.approvalOrder(orderId).observe(this, {
+            if (it.isOk()) {
+                orderQueryListAdapter.removeAt(position)
+                showToast("审核成功")
+            } else {
+                it.msg?.let { msg ->
+                    showToast(msg)
+                }
+            }
+        })
+    }
+
+    //查询全部入库信息
+    private fun getAllStorehouse() {
+        allNetViewModel.getAllStorehouse().observe(this, {
+            if (it.isOk()) {
+                if (!it.data.isNullOrEmpty()) {
+                    warehouseQueryListAdapter.setNewInstance(it.data)
+                }
+            } else {
+                it.msg?.let { msg ->
+                    showToast(msg)
+                }
+            }
+        })
+    }
+
+    //审核入库
+    private fun approvalStorehouse(orderId: String?, position: Int) {
+        allNetViewModel.approvalStorehouse(orderId).observe(this, {
+            if (it.isOk()) {
+                warehouseQueryListAdapter.removeAt(position)
+                showToast("审核成功")
             } else {
                 it.msg?.let { msg ->
                     showToast(msg)

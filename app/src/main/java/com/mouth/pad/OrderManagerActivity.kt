@@ -1,5 +1,6 @@
 package com.mouth.pad
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.view.View
@@ -14,21 +15,16 @@ import com.mouth.pad.bean.TOrder
 import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
 import com.mouth.pad.utils.SpUtil
+import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_order_manager.*
+import kotlinx.android.synthetic.main.activity_order_manager.te_delete
 import kotlinx.android.synthetic.main.layout_title_subtitle.*
 import java.util.*
 
 //订单管理
 class OrderManagerActivity : BaseActivity() {
 
-    //    private var pvTime: TimePickerView? = null
-//    private val onTimeSelectListener = OnTimeSelectListener { date, v ->
-//        date?.let {
-//            te_claim_date.text = TimeUtils.getYear(it)
-//        }
-//        pvTime?.dismiss()
-//    }
     private val allNetViewModel by lazy {
         AllNetViewModel()
     }
@@ -78,11 +74,6 @@ class OrderManagerActivity : BaseActivity() {
             }
 
         }
-//        val type = booleanArrayOf(true, true, true, true, true, false)
-//        //时间选择器
-//        val pvTime = TimePickerBuilder(this, onTimeSelectListener)
-//            .setType(type)
-//            .build()
 
         te_add.setOnSingleClickListener {
             val text = te_add.text
@@ -90,8 +81,9 @@ class OrderManagerActivity : BaseActivity() {
                 te_add.text = "扫码"
                 te_head.visibility = View.VISIBLE
                 rl_haed.visibility = View.VISIBLE
+                te_send.visibility = View.VISIBLE
             } else {
-                goCapture()
+                getPermissions()
             }
         }
         te_query.setOnSingleClickListener {
@@ -128,10 +120,10 @@ class OrderManagerActivity : BaseActivity() {
             insertOrder(orderInfo)
         }
 
-//        //选择申领日期
-//        te_claim_date.setOnSingleClickListener {
-//            pvTime?.show()
-//        }
+        //审核
+        te_verify.setOnSingleClickListener {
+            VerticalListActivity.launchVerticalListActivity(this,2)
+        }
 
     }
 
@@ -140,19 +132,31 @@ class OrderManagerActivity : BaseActivity() {
             if (it.isOk()) {
                 showToast("订单提交成功")
                 te_add.text = "添加"
-                selectDeptCode = ""
-                selectDeptName = ""
                 sp_department.setSelection(0)
                 ed_delivery_unit.setText("")
                 ed_claimant.setText(loginUserBean?.nickname)
                 te_head.visibility = View.GONE
                 rl_haed.visibility = View.GONE
+                te_send.visibility = View.GONE
                 te_search_result.visibility = View.GONE
                 rv_order_list.visibility = View.GONE
                 orderListAdapter.data.clear()
                 orderListAdapter.notifyDataSetChanged()
             }
         })
+    }
+
+    private fun getPermissions() {
+        PermissionX.init(this)
+            .permissions(
+                Manifest.permission.CAMERA
+            )
+            .request { allGranted, _, _ ->
+                //所有权限都允许
+                if (allGranted) {
+                    goCapture()
+                }
+            }
     }
 
     private fun goCapture() {
@@ -177,6 +181,7 @@ class OrderManagerActivity : BaseActivity() {
             if (it.isOk()) {
                 it.data?.apply{
                     te_search_result.visibility = View.VISIBLE
+                    rv_order_list.visibility = View.VISIBLE
                     orderListAdapter.addData(this)
                 }
             } else {

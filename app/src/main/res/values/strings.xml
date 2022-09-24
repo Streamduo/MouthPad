@@ -32,4 +32,22 @@
         <item>1006</item>
         <item>100601</item>
     </string-array>
+    <string-array name="storehouse">
+        <item>办公用品仓</item>
+        <item>低值材料仓</item>
+        <item>高值材料仓</item>
+        <item>二楼库房</item>
+        <item>三楼库房</item>
+        <item>信息化耗材仓</item>
+        <item>器械仓</item>
+    </string-array>
+    <string-array name="storehouseCode">
+        <item>401</item>
+        <item>402</item>
+        <item>403</item>
+        <item>405</item>
+        <item>406</item>
+        <item>407</item>
+        <item>408</item>
+    </string-array>
 </resources>

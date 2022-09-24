@@ -212,7 +212,7 @@ public class TMaterial {
      * 结存金额
      */
     //("结存金额")
-    public Double balanceAmount;
+    public String balanceAmount;
     /**
      * 待入库数量
      */
