@@ -5,7 +5,7 @@ package com.mouth.pad.bean
  * @Date 2022-09-18 21:15:19
  * @Description: 物资请领信息表
  */
-class TConsume (
+class TStoreHouse (
 
     /**
      * 业务类型

@@ -106,7 +106,7 @@
 
                 <Spinner
                     android:id="@+id/sp_business_type"
-                    android:layout_width="@dimen/distance_dp_100"
+                    android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_marginStart="@dimen/distance_dp_20"
                     android:layout_toEndOf="@+id/text_unit_price" />
@@ -120,13 +120,13 @@
                     android:layout_alignEnd="@+id/text_ticket_station"
                     android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
-                    android:text="仓库"
+                    android:text="仓库名称"
                     android:textColor="@color/app_text_99"
                     android:textSize="@dimen/distance_dp_12" />
 
                 <Spinner
                     android:id="@+id/sp_storehouse"
-                    android:layout_width="@dimen/distance_dp_150"
+                    android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_unit_price"
                     android:layout_marginStart="@dimen/distance_dp_20"

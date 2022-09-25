@@ -1,11 +1,8 @@
 package com.mouth.pad
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +14,7 @@ import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.google.gson.Gson
 import com.mouth.pad.adapter.WarehouseStuffListAdapter
 import com.mouth.pad.base.BaseActivity
-import com.mouth.pad.bean.TConsume
+import com.mouth.pad.bean.TStoreHouse
 import com.mouth.pad.utils.Logger
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
@@ -101,7 +98,7 @@ class LaidUpActivity : BaseActivity() {
             }
 
         }
-        val type = booleanArrayOf(true, true, true, true, true, false)
+        val type = booleanArrayOf(true, true, true, false, false, false)
         //时间选择器
         val pvTime = TimePickerBuilder(this, onTimeSelectListener)
             .setType(type)
@@ -160,7 +157,7 @@ class LaidUpActivity : BaseActivity() {
                 showToast("请添加商品")
                 return@setOnSingleClickListener
             }
-            val tConsume = TConsume(
+            val tConsume = TStoreHouse(
                 "1", selectDeptCode, selectDeptName, selectStorehouseCode,
                 deliveryUnit, invoiceDate, receiptNumber, data
             )

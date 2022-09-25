@@ -2,7 +2,8 @@ package com.mouth.pad.api
 
 
 import com.mouth.pad.bean.TMaterial
-import com.mouth.pad.bean.TMaterialQueryListBean
+import com.mouth.pad.bean.TMaterialRequisitionQueryListBean
+import com.mouth.pad.bean.TStoreHouseQueryListBean
 import com.mouth.pad.bean.TOrderQueryListBean
 import com.mouth.pad.net.HttpsCerUtils
 import com.mouth.pad.utils.Logger
@@ -14,11 +15,8 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
-import java.net.URLDecoder
 import java.util.concurrent.TimeUnit
 import okhttp3.RequestBody
-import okio.Buffer
-import java.lang.Exception
 
 
 interface ApiService {
@@ -106,13 +104,44 @@ interface ApiService {
      * 查询全部入库信息
      */
     @GET("/tReceipt/getAll")
-    fun getAllStorehouse(): Call<Result<MutableList<TMaterialQueryListBean>>>
+    fun getAllStorehouse(): Call<Result<MutableList<TStoreHouseQueryListBean>>>
+
+    /**
+     * 删除入库信息
+     */
+    @POST("/tReceipt/deleteBatchIds")
+    fun deleteStorehouse(@Body params: RequestBody): Call<Result<String>>
 
     /**
      * 审核入库
      */
     @POST("/tReceipt/approval")
     fun approvalStorehouse(@Body params: RequestBody): Call<Result<String>>
+
+    /**
+     * 新增-物资请领信息
+     */
+    @POST("/tConsume/insert")
+    fun insertTMaterialRequisition(@Body params: RequestBody): Call<Result<String>>
+
+
+    /**
+     * 查询全部物资请领信息
+     */
+    @GET("/tConsume/getAll")
+    fun getAllConsume(): Call<Result<MutableList<TMaterialRequisitionQueryListBean>>>
+
+    /**
+     * 删除物资请领信息
+     */
+    @POST("/tConsume/deleteBatchIds")
+    fun deleteConsume(@Body params: RequestBody): Call<Result<String>>
+
+    /**
+     * 审核物资请领信息
+     */
+    @POST("/tConsume/approval")
+    fun approvalConsume(@Body params: RequestBody): Call<Result<String>>
 
 }
 

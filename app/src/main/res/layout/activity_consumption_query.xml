@@ -46,7 +46,7 @@
             android:layout_alignStart="@+id/te_warehouse"
             android:layout_alignEnd="@+id/te_warehouse"
             android:layout_marginTop="@dimen/distance_dp_15"
-            android:text="仓库"
+            android:text="仓库名称"
             android:textColor="@color/app_text_33"
             android:textSize="@dimen/distance_dp_15" />
 

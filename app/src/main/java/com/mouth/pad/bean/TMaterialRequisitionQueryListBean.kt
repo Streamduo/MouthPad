@@ -9,12 +9,10 @@ import kotlinx.android.parcel.Parcelize
  * @Date 2022-09-18 21:15:19
  * @Description: 订单信息表
  */
-class TMaterialQueryListBean(
+class TMaterialRequisitionQueryListBean(
     var id: String? = null,
-    /**
-     * 业务类型
-     */
-    var businessType: String? = null,
+    //申领日期
+    var consumeDate: String? = null,
 
     /**
      * 科室编号
@@ -41,24 +39,15 @@ class TMaterialQueryListBean(
     var warehouseName: String? = null,
 
     /**
-     * 供应商
+     * 申领人
      */
-    //("供应商")
-    var supplier: String? = null,
-    /**
-     * 发票日期
-     */
-    var invoiceDate: String? = null,
+    var claimant: String? = null,
 
-    /**
-     * 发票号
-     */
-    var invoiceNo: String? = null,
     /**
      * 审核人
      */
     var reviewer: String? = null,
 
-    var receiptDetailList: MutableList<MaterialListBean>? = null,
+    var consumeDetailList: MutableList<MaterialListBean>? = null,
 
     )
