@@ -60,6 +60,6 @@ class TStoreHouseQueryListBean(
      */
     var reviewer: String? = null,
 
-    var receiptDetailList: MutableList<MaterialListBean>? = null,
+    var receiptDetailList: MutableList<TReceiptDetail>? = null,
 
     )

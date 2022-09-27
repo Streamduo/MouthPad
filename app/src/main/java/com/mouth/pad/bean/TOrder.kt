@@ -30,6 +30,6 @@ class TOrder( /**
                */
               //("供应商")
               var supplier: String? = null,
-              var orderDetailList: MutableList<TMaterial>? = null) {
+              var orderDetailList: MutableList<TOrderDetail>? = null) {
 
 }

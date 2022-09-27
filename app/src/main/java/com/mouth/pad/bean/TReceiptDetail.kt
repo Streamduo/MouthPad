@@ -1,56 +1,63 @@
-package com.mouth.pad.bean;
-
+package com.mouth.pad.bean
 
 /**
  * @Author wuxiao
  * @Date 2022-09-18 21:15:19
  * @Description: 入库材料明细信息表
  */
-public class TReceiptDetail{
+class TReceiptDetail (
 
+    var id: String? = null,
+
+    /**
+     * 创建时间
+     */
+    var createTime: String? = null,
     /**
      * 材料编码
      */
     //("材料编码")
-    private String materialCode;
+    var materialCode: String? = null,
+
     /**
      * 材料名称
      */
     //("材料名称")
-    private String materialName;
+    var materialName: String? = null,
+
     /**
      * 规格型号
      */
     //("规格型号")
-    private String model;
+    var model: String? = null,
+
     /**
      * 单价
      */
     //("单价")
-    private Double unitPrice;
+    var unitPrice: String? = null,
+
     /**
      * 单位
      */
     //("单位")
-    private String unit;
+    var unit: String? = null,
+
     /**
      * 库存数量
      */
     //("库存数量")
-    private Integer stockNum;
+    var stockNum: String? = null,
+
     /**
      * 结存金额
      */
     //("结存金额")
-    private Double balanceAmount;
+    var balanceAmount: String? = null,
+
     /**
      * 待入库数量
      */
     //("待入库数量")
-    private String noWarehousingNum;
-    /**
-     * 入库单号
-     */
-    //("入库单号")
-    private String receiptNo;
-}
+    var noWarehousingNum: String? = null,
+)

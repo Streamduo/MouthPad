@@ -92,7 +92,7 @@ interface ApiService {
      * 审核订单
      */
     @POST("/tOrder/approval")
-    fun approvalOrder(@Body params: RequestBody): Call<Result<String>>
+    fun approvalOrder(@Body params: MutableMap<String, Any?>): Call<Result<String>>
 
     /**
      * 新增-入库信息
@@ -116,7 +116,7 @@ interface ApiService {
      * 审核入库
      */
     @POST("/tReceipt/approval")
-    fun approvalStorehouse(@Body params: RequestBody): Call<Result<String>>
+    fun approvalStorehouse(@Body params: MutableMap<String, Any?>): Call<Result<String>>
 
     /**
      * 新增-物资请领信息
@@ -141,7 +141,7 @@ interface ApiService {
      * 审核物资请领信息
      */
     @POST("/tConsume/approval")
-    fun approvalConsume(@Body params: RequestBody): Call<Result<String>>
+    fun approvalConsume(@Body params: MutableMap<String, Any?>): Call<Result<String>>
 
 }
 

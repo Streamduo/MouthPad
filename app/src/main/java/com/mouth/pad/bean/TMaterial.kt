@@ -1,221 +1,263 @@
-package com.mouth.pad.bean;
-
+package com.mouth.pad.bean
 
 /**
  * @Author wuxiao
  * @Date 2022-09-20 14:08:57
  * @Description:
  */
-public class TMaterial {
+class TMaterial (
+    var id: String? = null,
+    var createTime: String? = null,
 
     /**
      *
      */
     //("材料条码编号")
-    public String invCode;
+    var invCode: String? = null,
+
     /**
      *
      */
     //("")
-    public String invId;
+    var invId: String? = null,
+
     /**
      *
      */
     //("")
-    public String compCode;
+    var compCode: String? = null,
+
     /**
      *
      */
     //("")
-    public String copyCode;
+    var copyCode: String? = null,
+
     /**
      *
      */
     //("材料名称")
-    public String invName;
+    var invName: String? = null,
+
     /**
      *
      */
     //("")
-    public String spell;
+    var spell: String? = null,
+
     /**
      *
      */
     //("规格型号")
-    public String invModel;
+    var invModel: String? = null,
+
     /**
      *
      */
     //("单位编码")
-    public String unitCode;
+    var unitCode: String? = null,
+
     /**
      *
      */
     //("单位名称")
-    public String unitName;
+    var unitName: String? = null,
+
     /**
      *
      */
     //("")
-    public String unitCodeF;
+    var unitCodeF: String? = null,
+
     /**
      *
      */
     //("")
-    public String mateTypeCode;
+    var mateTypeCode: String? = null,
+
     /**
      *
      */
     //("")
-    public String factoryCode;
+    var factoryCode: String? = null,
+
     /**
      *
      */
     //("")
-    public String invAttrCode;
+    var invAttrCode: String? = null,
+
     /**
      *
      */
     //("")
-    public String batchNo;
+    var batchNo: String? = null,
+
     /**
      *
      */
     //("")
-    public String curStock;
+    var curStock: String? = null,
+
     /**
      *
      */
     //("")
-    public String price;
+    var price: String? = null,
+
     /**
      *
      */
     //("")
-    public String pricRate;
+    var pricRate: String? = null,
+
     /**
      *
      */
     //("单价")
-    public String planPrice;
+    var planPrice: String? = null,
+
     /**
      *
      */
     //("")
-    public String refeCost;
+    var refeCost: String? = null,
+
     /**
      *
      */
     //("")
-    public String cusCode;
+    var cusCode: String? = null,
+
     /**
      *
      */
     //("")
-    public String buyAhead;
+    var buyAhead: String? = null,
+
     /**
      *
      */
     //("")
-    public String ecoBat;
+    var ecoBat: String? = null,
+
     /**
      *
      */
     //("")
-    public String abc;
+    var abc: String? = null,
+
     /**
      *
      */
     //("")
-    public String stockSecu;
+    var stockSecu: String? = null,
+
     /**
      *
      */
     //("")
-    public String lowLimit;
+    var lowLimit: String? = null,
+
     /**
      *
      */
     //("")
-    public String highLimit;
+    var highLimit: String? = null,
+
     /**
      *
      */
     //("")
-    public String stayTime;
+    var stayTime: String? = null,
+
     /**
      *
      */
     //("")
-    public String perWeight;
+    var perWeight: String? = null,
+
     /**
      *
      */
     //("")
-    public String perVolum;
+    var perVolum: String? = null,
+
     /**
      *
      */
     //("")
-    public String sdate;
+    var sdate: String? = null,
+
     /**
      *
      */
     //("")
-    public String edate;
+    var edate: String? = null,
+
     /**
      *
      */
     //("")
-    public String isCert;
+    var isCert: String? = null,
+
     /**
      *
      */
     //("")
-    public String brandName;
+    var brandName: String? = null,
+
     /**
      *
      */
     //("")
-    public String agentName;
+    var agentName: String? = null,
+
     /**
      *
      */
     //("")
-    public String alias;
+    var alias: String? = null,
+
     /**
      *
      */
     //("")
-    public String refPrice;
+    var refPrice: String? = null,
+
     /**
      *
      */
     //("")
-    public String isBar;
+    var isBar: String? = null,
+
     /**
      *
      */
     //("")
-    public String barCodeNew;
+    var barCodeNew: String? = null,
+
     /**
      *
      */
     //("")
-    public String cusName;
+    var cusName: String? = null,
+
     /**
      * 库存数量
      */
     //("库存数量")
-    public String stockNum;
+    var stockNum: String? = null,
+
     /**
      * 结存金额
      */
     //("结存金额")
-    public String balanceAmount;
+    var balanceAmount: String? = null,
+
     /**
      * 待入库数量
      */
     //("待入库数量")
-    public String noWarehousingNum;
-}
+    var noWarehousingNum: String? = null
+)

@@ -17,7 +17,7 @@ class WarehouseQueryListAdapter(layoutResId: Int) :
     override fun convert(holder: BaseViewHolder, item: TStoreHouseQueryListBean) {
         val rvStuffList = holder.getView<RecyclerView>(R.id.rv_stuff_list)
         rvStuffList.layoutManager = LinearLayoutManager(context)
-        val stuffListAdapter = StuffSmallListAdapter(R.layout.item_stuff_list_small)
+        val stuffListAdapter = WarehouseSmallListAdapter(R.layout.item_warehouse_stuff_list_small)
         rvStuffList.adapter = stuffListAdapter
         holder.setVisible(R.id.te_delete, isDelete)
         holder.setVisible(R.id.te_check, isCheck)

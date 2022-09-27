@@ -14,8 +14,13 @@ import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.google.gson.Gson
 import com.mouth.pad.adapter.WarehouseStuffListAdapter
 import com.mouth.pad.base.BaseActivity
+import com.mouth.pad.bean.LoginUserBean
+import com.mouth.pad.bean.TMaterial
+import com.mouth.pad.bean.TReceiptDetail
 import com.mouth.pad.bean.TStoreHouse
+import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
+import com.mouth.pad.utils.SpUtil
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_laid_up.*
@@ -50,6 +55,9 @@ class LaidUpActivity : BaseActivity() {
     private var selectDeptName = ""
     private var selectStorehouseCode = ""
     private var selectStorehouse = ""
+    private var selectBusinessTypeCode = ""
+    private var selectBusinessType = ""
+    private var loginUserBean: LoginUserBean? = null
 
     override fun layoutId(): Int {
         return R.layout.activity_laid_up
@@ -66,6 +74,24 @@ class LaidUpActivity : BaseActivity() {
         rv_order_list?.apply {
             layoutManager = LinearLayoutManager(this@LaidUpActivity)
             adapter = warehouseStuffListAdapter
+        }
+        loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
+        ed_prepared.setText(loginUserBean?.nickname)
+
+        val businessTypeCode = resources.getStringArray(R.array.businessTypeCode)
+        val businessType = resources.getStringArray(R.array.businessType)
+
+        sp_business_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                selectBusinessType = businessType[p2]
+                selectBusinessTypeCode = businessTypeCode[p2]
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
         }
 
         val storehouseCode = resources.getStringArray(R.array.storehouseCode)
@@ -120,17 +146,18 @@ class LaidUpActivity : BaseActivity() {
             }
         }
         te_delete.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,3)
+            VerticalListActivity.launchVerticalListActivity(this, 3)
         }
         //审核
         te_verify.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,4)
+            VerticalListActivity.launchVerticalListActivity(this, 4)
         }
         //保存
         te_save.setOnSingleClickListener {
             val deliveryUnit = te_delivery_unit.text.toString()
             val invoiceDate = te_invoice_date.text.toString()
             val receiptNumber = te_receipt_number.text.toString()
+            val edPrepared = ed_prepared.text.toString()
             val data = warehouseStuffListAdapter.data
             if (selectStorehouseCode.isEmpty()) {
                 showToast("请选择仓库")
@@ -152,15 +179,38 @@ class LaidUpActivity : BaseActivity() {
                 showToast("请输入发票号")
                 return@setOnSingleClickListener
             }
-
+            if (edPrepared.isEmpty()) {
+                showToast("请输入制单人")
+                return@setOnSingleClickListener
+            }
             if (data.isNullOrEmpty()) {
                 showToast("请添加商品")
                 return@setOnSingleClickListener
             }
+            val receiptDetailList: MutableList<TReceiptDetail> = ArrayList()
+            for (tMaterial in data) {
+                tMaterial.apply {
+                    val tReceiptDetail = TReceiptDetail(
+                        id, createTime, mateTypeCode, invName, invModel,
+                        planPrice, unitName, stockNum, balanceAmount, noWarehousingNum
+                    )
+                    receiptDetailList.add(tReceiptDetail)
+                }
+
+            }
             val tConsume = TStoreHouse(
-                "1", selectDeptCode, selectDeptName, selectStorehouseCode,
-                deliveryUnit, invoiceDate, receiptNumber, data
+                selectBusinessType,
+                selectDeptCode,
+                selectDeptName,
+                selectStorehouseCode,
+                selectStorehouseCode,
+                deliveryUnit,
+                invoiceDate,
+                receiptNumber,
+                edPrepared,
+                receiptDetailList
             )
+
             val gson = Gson()
             val tConsumeJson = gson.toJson(tConsume)
             Logger.d(tConsumeJson)
@@ -169,9 +219,9 @@ class LaidUpActivity : BaseActivity() {
     }
 
     //入库
-    private fun insertStorehouse(storehouseInfo:String){
-        allNetViewModel.insertStorehouse(storehouseInfo).observe(this,{
-            if (it.isOk()){
+    private fun insertStorehouse(storehouseInfo: String) {
+        allNetViewModel.insertStorehouse(storehouseInfo).observe(this, {
+            if (it.isOk()) {
                 showToast("入库成功")
                 sp_department.setSelection(0)
                 sp_storehouse.setSelection(0)
@@ -185,7 +235,7 @@ class LaidUpActivity : BaseActivity() {
                 rv_order_list.visibility = View.GONE
                 warehouseStuffListAdapter.data.clear()
                 warehouseStuffListAdapter.notifyDataSetChanged()
-            }else{
+            } else {
                 it.msg?.let { msg ->
                     showToast(msg)
                 }

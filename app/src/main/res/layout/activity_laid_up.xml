@@ -109,6 +109,8 @@
                     android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_marginStart="@dimen/distance_dp_20"
+                    android:entries="@array/businessType"
+                    android:spinnerMode="dialog"
                     android:layout_toEndOf="@+id/text_unit_price" />
 
                 <TextView
@@ -173,7 +175,7 @@
 
                 <EditText
                     android:id="@+id/te_delivery_unit"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_commodity_all_price"
                     android:layout_marginStart="@dimen/distance_dp_20"
@@ -198,7 +200,7 @@
 
                 <TextView
                     android:id="@+id/te_invoice_date"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_ticket_station"
                     android:layout_marginStart="@dimen/distance_dp_20"
@@ -225,7 +227,7 @@
 
                 <EditText
                     android:id="@+id/te_receipt_number"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_ticket_time"
                     android:layout_marginStart="@dimen/distance_dp_20"
@@ -233,10 +235,37 @@
                     android:layout_toEndOf="@+id/text_commodity_specifications"
                     android:background="@color/color_white"
                     android:hint="请输入发票号"
+                    android:inputType="number"
                     android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
                     android:textSize="@dimen/distance_dp_12" />
 
+                <TextView
+                    android:id="@+id/text_prepared"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/te_receipt_number"
+                    android:layout_alignStart="@+id/text_ticket_time"
+                    android:layout_alignEnd="@+id/text_ticket_time"
+                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:gravity="start"
+                    android:text="制单人"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_12" />
+
+                <EditText
+                    android:id="@+id/ed_prepared"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/te_receipt_number"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_toEndOf="@+id/text_prepared"
+                    android:background="@color/color_white"
+                    android:hint="请输入制单人"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/distance_dp_8"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_12" />
 
             </RelativeLayout>
 

@@ -3,7 +3,7 @@ package com.mouth.pad.bean
 /**
  * @Author wuxiao
  * @Date 2022-09-18 21:15:19
- * @Description: 物资请领信息表
+ * @Description:
  */
 class TStoreHouse (
 
@@ -24,12 +24,14 @@ class TStoreHouse (
     //("科室名称")
     var deptName: String? = null,
 
-
     /**
      * 仓库编码
      */
     //("仓库编码")
     var warehouseCode: String? = null,
+
+    //仓库名称
+    var warehouseName: String? = null,
 
     /**
      * 供应商
@@ -45,11 +47,10 @@ class TStoreHouse (
      * 发票号
      */
     var invoiceNo: String? = null,
+    /**
+     * 制单人
+     */
+    var applicant: String? = null,
 
-    var receiptDetailList: MutableList<TMaterial>? = null,
-    //    /**
-//     * 审核人
-//     */
-//    //("审核人")
-//    var reviewer: String? = null,
+    var receiptDetailList: MutableList<TReceiptDetail>? = null,
 )

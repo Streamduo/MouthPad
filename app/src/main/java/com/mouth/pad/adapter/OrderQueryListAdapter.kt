@@ -18,7 +18,7 @@ class OrderQueryListAdapter(layoutResId: Int) :
     override fun convert(holder: BaseViewHolder, item: TOrderQueryListBean) {
         val rvStuffList = holder.getView<RecyclerView>(R.id.rv_stuff_list)
         rvStuffList.layoutManager = LinearLayoutManager(context)
-        val stuffListAdapter = StuffSmallListAdapter(R.layout.item_stuff_list_small)
+        val stuffListAdapter = OrderStuffSmallListAdapter(R.layout.item_stuff_list_small)
         rvStuffList.adapter = stuffListAdapter
         holder.setVisible(R.id.te_delete, isDelete)
         holder.setVisible(R.id.te_check, isCheck)

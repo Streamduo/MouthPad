@@ -7,7 +7,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.mouth.pad.R
 import com.mouth.pad.bean.TMaterialRequisitionQueryListBean
-import com.mouth.pad.bean.TStoreHouseQueryListBean
 
 class MaterialRequisitionQueryListAdapter(layoutResId: Int) :
     BaseQuickAdapter<TMaterialRequisitionQueryListBean, BaseViewHolder>(layoutResId) {
@@ -18,7 +17,7 @@ class MaterialRequisitionQueryListAdapter(layoutResId: Int) :
     override fun convert(holder: BaseViewHolder, item: TMaterialRequisitionQueryListBean) {
         val rvStuffList = holder.getView<RecyclerView>(R.id.rv_stuff_list)
         rvStuffList.layoutManager = LinearLayoutManager(context)
-        val stuffListAdapter = StuffSmallListAdapter(R.layout.item_stuff_list_small)
+        val stuffListAdapter = MaterialRequisitionStuffSmallListAdapter(R.layout.item_material_requisition_stuff_list_small)
         rvStuffList.adapter = stuffListAdapter
         holder.setVisible(R.id.te_delete, isDelete)
         holder.setVisible(R.id.te_check, isCheck)

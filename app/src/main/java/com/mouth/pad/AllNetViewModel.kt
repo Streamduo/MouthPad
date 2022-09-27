@@ -11,8 +11,6 @@ import okhttp3.MediaType
 import okhttp3.RequestBody
 
 
-
-
 class AllNetViewModel {
 
     //添加订单
@@ -35,7 +33,8 @@ class AllNetViewModel {
 
     //查询全部订单
     fun getAllOrder(): MutableLiveData<com.mouth.pad.api.Result<MutableList<TOrderQueryListBean>>> {
-        val liveDatas = MutableLiveData<com.mouth.pad.api.Result<MutableList<TOrderQueryListBean>>>()
+        val liveDatas =
+            MutableLiveData<com.mouth.pad.api.Result<MutableList<TOrderQueryListBean>>>()
         ApiService.get().getAllOrder().enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
@@ -46,12 +45,15 @@ class AllNetViewModel {
         ApiService.get().selectByMaterialCode(materialCode).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //审核订单
-    fun approvalOrder(orderId: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
+    fun approvalOrder(id: String?,
+                      reviewer: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()
-        val requestBody: RequestBody =
-            RequestBody.create(MediaType.parse("application/json; charset=utf-8"), orderId)
-        ApiService.get().approvalOrder(requestBody).enqueue(LiveDataCallback(liveDatas))
+        val params = hashMapOf<String, Any?>()
+        params["id"] = id
+        params["reviewer"] = reviewer
+        ApiService.get().approvalOrder(params).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
 
@@ -63,6 +65,7 @@ class AllNetViewModel {
         ApiService.get().insertStorehouse(requestBody).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //删除入库信息
     fun deleteStorehouse(orderId: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()
@@ -71,35 +74,46 @@ class AllNetViewModel {
         ApiService.get().deleteStorehouse(requestBody).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //查询全部入库信息
     fun getAllStorehouse(): MutableLiveData<com.mouth.pad.api.Result<MutableList<TStoreHouseQueryListBean>>> {
-        val liveDatas = MutableLiveData<com.mouth.pad.api.Result<MutableList<TStoreHouseQueryListBean>>>()
+        val liveDatas =
+            MutableLiveData<com.mouth.pad.api.Result<MutableList<TStoreHouseQueryListBean>>>()
         ApiService.get().getAllStorehouse().enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //审核入库
-    fun approvalStorehouse(orderId: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
+    fun approvalStorehouse(
+        id: String?,
+        reviewer: String?
+    ): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()
-        val requestBody: RequestBody =
-            RequestBody.create(MediaType.parse("application/json; charset=utf-8"), orderId)
-        ApiService.get().approvalStorehouse(requestBody).enqueue(LiveDataCallback(liveDatas))
+        val params = hashMapOf<String, Any?>()
+        params["id"] = id
+        params["reviewer"] = reviewer
+        ApiService.get().approvalStorehouse(params).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //新增-物资请领信息
     fun insertTMaterialRequisition(orderInfo: String): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()
         val requestBody: RequestBody =
             RequestBody.create(MediaType.parse("application/json; charset=utf-8"), orderInfo)
-        ApiService.get().insertTMaterialRequisition(requestBody).enqueue(LiveDataCallback(liveDatas))
+        ApiService.get().insertTMaterialRequisition(requestBody)
+            .enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
 
     //查询全部入库信息
     fun getAllConsume(): MutableLiveData<com.mouth.pad.api.Result<MutableList<TMaterialRequisitionQueryListBean>>> {
-        val liveDatas = MutableLiveData<com.mouth.pad.api.Result<MutableList<TMaterialRequisitionQueryListBean>>>()
+        val liveDatas =
+            MutableLiveData<com.mouth.pad.api.Result<MutableList<TMaterialRequisitionQueryListBean>>>()
         ApiService.get().getAllConsume().enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //删除入库信息
     fun deleteConsume(orderId: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()
@@ -108,12 +122,15 @@ class AllNetViewModel {
         ApiService.get().deleteConsume(requestBody).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
+
     //审核入库
-    fun approvalConsume(orderId: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
+    fun approvalConsume(id: String?,
+                        reviewer: String?): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()
-        val requestBody: RequestBody =
-            RequestBody.create(MediaType.parse("application/json; charset=utf-8"), orderId)
-        ApiService.get().approvalConsume(requestBody).enqueue(LiveDataCallback(liveDatas))
+        val params = hashMapOf<String, Any?>()
+        params["id"] = id
+        params["reviewer"] = reviewer
+        ApiService.get().approvalConsume(params).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
 

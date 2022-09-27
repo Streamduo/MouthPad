@@ -3,8 +3,6 @@ package com.mouth.pad
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,9 +13,10 @@ import com.bmncc.pis.ylct.utils.TimeUtils
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.google.gson.Gson
 import com.mouth.pad.adapter.MaterialRequisitionStuffListAdapter
-import com.mouth.pad.adapter.WarehouseStuffListAdapter
 import com.mouth.pad.base.BaseActivity
+import com.mouth.pad.bean.TConsumeDetail
 import com.mouth.pad.bean.TMaterialRequisition
+import com.mouth.pad.bean.TOrderDetail
 import com.mouth.pad.utils.Logger
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
@@ -31,6 +30,7 @@ import kotlinx.android.synthetic.main.activity_material_requisition.te_delete
 import kotlinx.android.synthetic.main.activity_material_requisition.te_head
 import kotlinx.android.synthetic.main.activity_material_requisition.te_verify
 import kotlinx.android.synthetic.main.layout_title_subtitle.*
+import java.util.ArrayList
 
 //物资请领
 class MaterialRequisitionActivity : BaseActivity() {
@@ -125,7 +125,7 @@ class MaterialRequisitionActivity : BaseActivity() {
             }
         }
         te_delete.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,5)
+            VerticalListActivity.launchVerticalListActivity(this, 5)
         }
         //发送
         te_send.setOnSingleClickListener {
@@ -153,8 +153,20 @@ class MaterialRequisitionActivity : BaseActivity() {
                 showToast("请添加商品")
                 return@setOnSingleClickListener
             }
-            val tMaterialRequisition = TMaterialRequisition(teClaimDate,selectDeptCode,selectDeptName,
-                selectStorehouseCode,edClaimant,data)
+            val orderDetailList: MutableList<TConsumeDetail> = ArrayList()
+            for (tMaterial in data) {
+                tMaterial.apply {
+                    val tConsumeDetail = TConsumeDetail(
+                        id, createTime, mateTypeCode, invName, invModel,
+                        planPrice, unitName, stockNum, stockNum, noWarehousingNum
+                    )
+                    orderDetailList.add(tConsumeDetail)
+                }
+            }
+            val tMaterialRequisition = TMaterialRequisition(
+                teClaimDate, selectDeptCode, selectDeptName, selectStorehouse,
+                selectStorehouseCode, edClaimant, orderDetailList
+            )
             val gson = Gson()
             val json = gson.toJson(tMaterialRequisition)
             Logger.d(json)
@@ -163,13 +175,14 @@ class MaterialRequisitionActivity : BaseActivity() {
         }
         //审核
         te_verify.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,6)
+            VerticalListActivity.launchVerticalListActivity(this, 6)
         }
     }
+
     //新增-物资请领信息
     private fun insertTMaterialRequisition(json: String) {
-        allNetViewModel.insertTMaterialRequisition(json).observe(this,{
-            if (it.isOk()){
+        allNetViewModel.insertTMaterialRequisition(json).observe(this, {
+            if (it.isOk()) {
                 showToast("物资请领成功")
                 te_add.text = "添加"
                 sp_department.setSelection(0)
@@ -183,7 +196,7 @@ class MaterialRequisitionActivity : BaseActivity() {
                 rv_order_list.visibility = View.GONE
                 materialRequisitionStuffListAdapter.data.clear()
                 materialRequisitionStuffListAdapter.notifyDataSetChanged()
-            }else{
+            } else {
                 it.msg?.let { msg ->
                     showToast(msg)
                 }

@@ -30,16 +30,13 @@ class TMaterialRequisition (
     //("仓库编码")
     var warehouseCode: String? = null,
 
+    //仓库名称
+    var warehouseName: String? = null,
 
     /**
      * 请领人
      */
-    var buyer: String? = null,
+    var applicant: String? = null,
 
-    var consumeDetailList: MutableList<TMaterial>? = null,
-    //    /**
-//     * 审核人
-//     */
-//    //("审核人")
-//    var reviewer: String? = null,
+    var consumeDetailList: MutableList<TConsumeDetail>? = null,
 )

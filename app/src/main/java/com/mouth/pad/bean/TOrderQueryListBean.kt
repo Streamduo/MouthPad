@@ -39,7 +39,7 @@ class TOrderQueryListBean(
      */
     //("供应商")
     var supplier: String? = null,
-    var orderDetailList: MutableList<MaterialListBean>? = ArrayList(),
+    var orderDetailList: MutableList<TOrderDetail>? = ArrayList(),
     var createTime: String? = null,
     var orderAmount: String? = null,
     var orderState: String? = null,

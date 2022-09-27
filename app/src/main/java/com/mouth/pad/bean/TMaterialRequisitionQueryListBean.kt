@@ -48,6 +48,6 @@ class TMaterialRequisitionQueryListBean(
      */
     var reviewer: String? = null,
 
-    var consumeDetailList: MutableList<MaterialListBean>? = null,
+    var consumeDetailList: MutableList<TConsumeDetail>? = null,
 
     )

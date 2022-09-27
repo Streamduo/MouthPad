@@ -6,15 +6,16 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.mouth.pad.R
 import com.mouth.pad.bean.TMaterial
 
-class WarehouseStuffListAdapter(layoutResId: Int) : BaseQuickAdapter<TMaterial, BaseViewHolder>(layoutResId) {
+class WarehouseStuffListAdapter(layoutResId: Int) :
+    BaseQuickAdapter<TMaterial, BaseViewHolder>(layoutResId) {
 
     override fun convert(holder: BaseViewHolder, item: TMaterial) {
         item.apply {
             holder.setText(R.id.te_material, invName)
             holder.setText(R.id.te_specification, invModel)
-            holder.setText(R.id.te_amount, balanceAmount)
-            holder.setText(R.id.te_num, noWarehousingNum)
-            holder.setText(R.id.te_price, planPrice)
+            holder.setText(R.id.te_amount, planPrice + "元")
+            holder.setText(R.id.te_num, "1")
+            holder.setText(R.id.te_price, planPrice + "元")
         }
     }
 }

@@ -2,15 +2,15 @@ package com.mouth.pad
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.mouth.pad.adapter.MaterialRequisitionQueryListAdapter
 import com.mouth.pad.adapter.OrderQueryListAdapter
 import com.mouth.pad.adapter.WarehouseQueryListAdapter
-import com.mouth.pad.adapter.WarehouseStuffListAdapter
 import com.mouth.pad.base.BaseActivity
+import com.mouth.pad.bean.LoginUserBean
+import com.mouth.pad.utils.Const
+import com.mouth.pad.utils.SpUtil
 import com.mouth.pad.view.CurrencyDialog
 import kotlinx.android.synthetic.main.activity_vertical_list.*
 
@@ -45,6 +45,8 @@ class VerticalListActivity : BaseActivity() {
         iv_back.setOnSingleClickListener {
             finish()
         }
+        val loginUserBean =
+            SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
         rv_vertical.layoutManager = LinearLayoutManager(this)
         when (listType) {
             0 -> {//订单查询
@@ -98,11 +100,12 @@ class VerticalListActivity : BaseActivity() {
         }
         orderQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = orderQueryListAdapter.getItem(position)
-            when(view.id){
+            when (view.id) {
                 R.id.te_delete -> {
                     val currencyDialog = CurrencyDialog()
-                    currencyDialog.showDialog(this,"是否删除订单？","取消","确定")
-                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                    currencyDialog.showDialog(this, "是否删除订单？", "取消", "确定")
+                    currencyDialog.setDialogClickListener(object :
+                        CurrencyDialog.DialogClickListener {
                         override fun onLeftClick() {
                             currencyDialog.dialog.dismiss()
                         }
@@ -116,15 +119,16 @@ class VerticalListActivity : BaseActivity() {
                 }
                 R.id.te_check -> {
                     val currencyDialog = CurrencyDialog()
-                    currencyDialog.showDialog(this,"是否审核？","取消","同意")
-                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                    currencyDialog.showDialog(this, "是否审核？", "取消", "同意")
+                    currencyDialog.setDialogClickListener(object :
+                        CurrencyDialog.DialogClickListener {
                         override fun onLeftClick() {
                             currencyDialog.dialog.dismiss()
                         }
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalOrder(item.id, position)
+                            approvalOrder(item.id, position, loginUserBean?.nickname)
                         }
 
                     })
@@ -135,11 +139,12 @@ class VerticalListActivity : BaseActivity() {
 
         warehouseQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = warehouseQueryListAdapter.getItem(position)
-            when(view.id){
+            when (view.id) {
                 R.id.te_delete -> {
                     val currencyDialog = CurrencyDialog()
-                    currencyDialog.showDialog(this,"是否删除入库信息？","取消","确定")
-                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                    currencyDialog.showDialog(this, "是否删除入库信息？", "取消", "确定")
+                    currencyDialog.setDialogClickListener(object :
+                        CurrencyDialog.DialogClickListener {
                         override fun onLeftClick() {
                             currencyDialog.dialog.dismiss()
                         }
@@ -153,15 +158,16 @@ class VerticalListActivity : BaseActivity() {
                 }
                 R.id.te_check -> {
                     val currencyDialog = CurrencyDialog()
-                    currencyDialog.showDialog(this,"是否审核？","取消","同意")
-                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                    currencyDialog.showDialog(this, "是否审核？", "取消", "同意")
+                    currencyDialog.setDialogClickListener(object :
+                        CurrencyDialog.DialogClickListener {
                         override fun onLeftClick() {
                             currencyDialog.dialog.dismiss()
                         }
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalStorehouse(item.id, position)
+                            approvalStorehouse(item.id, position, loginUserBean?.nickname)
                         }
 
                     })
@@ -172,11 +178,12 @@ class VerticalListActivity : BaseActivity() {
 
         materialRequisitionQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = materialRequisitionQueryListAdapter.getItem(position)
-            when(view.id){
+            when (view.id) {
                 R.id.te_delete -> {
                     val currencyDialog = CurrencyDialog()
-                    currencyDialog.showDialog(this,"是否删除物资请领信息？","取消","确定")
-                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                    currencyDialog.showDialog(this, "是否删除物资请领信息？", "取消", "确定")
+                    currencyDialog.setDialogClickListener(object :
+                        CurrencyDialog.DialogClickListener {
                         override fun onLeftClick() {
                             currencyDialog.dialog.dismiss()
                         }
@@ -190,15 +197,16 @@ class VerticalListActivity : BaseActivity() {
                 }
                 R.id.te_check -> {
                     val currencyDialog = CurrencyDialog()
-                    currencyDialog.showDialog(this,"是否审核？","取消","同意")
-                    currencyDialog.setDialogClickListener(object :CurrencyDialog.DialogClickListener{
+                    currencyDialog.showDialog(this, "是否审核？", "取消", "同意")
+                    currencyDialog.setDialogClickListener(object :
+                        CurrencyDialog.DialogClickListener {
                         override fun onLeftClick() {
                             currencyDialog.dialog.dismiss()
                         }
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalConsume(item.id, position)
+                            approvalConsume(item.id, position, loginUserBean?.nickname)
                         }
 
                     })
@@ -238,8 +246,8 @@ class VerticalListActivity : BaseActivity() {
     }
 
     //审核订单
-    private fun approvalOrder(orderId: String?, position: Int) {
-        allNetViewModel.approvalOrder(orderId).observe(this, {
+    private fun approvalOrder(orderId: String?, position: Int, nickname: String?) {
+        allNetViewModel.approvalOrder(orderId, nickname).observe(this, {
             if (it.isOk()) {
                 orderQueryListAdapter.removeAt(position)
                 showToast("审核成功")
@@ -270,7 +278,7 @@ class VerticalListActivity : BaseActivity() {
     private fun deleteStorehouse(orderId: String?, position: Int) {
         allNetViewModel.deleteStorehouse(orderId).observe(this, {
             if (it.isOk()) {
-                orderQueryListAdapter.removeAt(position)
+                warehouseQueryListAdapter.removeAt(position)
                 showToast("删除成功")
             } else {
                 it.msg?.let { msg ->
@@ -281,8 +289,8 @@ class VerticalListActivity : BaseActivity() {
     }
 
     //审核入库
-    private fun approvalStorehouse(orderId: String?, position: Int) {
-        allNetViewModel.approvalStorehouse(orderId).observe(this, {
+    private fun approvalStorehouse(orderId: String?, position: Int, nickname: String?) {
+        allNetViewModel.approvalStorehouse(orderId, nickname).observe(this, {
             if (it.isOk()) {
                 warehouseQueryListAdapter.removeAt(position)
                 showToast("审核成功")
@@ -324,8 +332,8 @@ class VerticalListActivity : BaseActivity() {
     }
 
     //审核物资请领信息
-    private fun approvalConsume(orderId: String?, position: Int) {
-        allNetViewModel.approvalConsume(orderId).observe(this, {
+    private fun approvalConsume(orderId: String?, position: Int, nickname: String?) {
+        allNetViewModel.approvalConsume(orderId, nickname).observe(this, {
             if (it.isOk()) {
                 materialRequisitionQueryListAdapter.removeAt(position)
                 showToast("审核成功")

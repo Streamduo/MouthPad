@@ -8,10 +8,11 @@ import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.google.gson.Gson
-import com.mouth.pad.adapter.StuffListAdapter
+import com.mouth.pad.adapter.OrderStuffListAdapter
 import com.mouth.pad.base.BaseActivity
 import com.mouth.pad.bean.LoginUserBean
 import com.mouth.pad.bean.TOrder
+import com.mouth.pad.bean.TOrderDetail
 import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
 import com.mouth.pad.utils.SpUtil
@@ -29,7 +30,7 @@ class OrderManagerActivity : BaseActivity() {
         AllNetViewModel()
     }
     private val orderListAdapter by lazy {
-        StuffListAdapter(R.layout.item_stuff_list)
+        OrderStuffListAdapter(R.layout.item_stuff_list)
     }
     private var selectDeptCode = ""
     private var selectDeptName = ""
@@ -113,7 +114,17 @@ class OrderManagerActivity : BaseActivity() {
                 showToast("请添加商品")
                 return@setOnSingleClickListener
             }
-            val tOrder = TOrder(selectDeptCode, selectDeptName, buyer, supplier, data)
+            val orderDetailList: MutableList<TOrderDetail> = ArrayList()
+            for (tMaterial in data) {
+                tMaterial.apply {
+                    val tOrderDetail = TOrderDetail(
+                        id, createTime, mateTypeCode, invName, invModel,
+                        planPrice, unitName, stockNum, balanceAmount, noWarehousingNum
+                    )
+                    orderDetailList.add(tOrderDetail)
+                }
+            }
+            val tOrder = TOrder(selectDeptCode, selectDeptName, buyer, supplier, orderDetailList)
             val gson = Gson()
             val orderInfo = gson.toJson(tOrder)
             Logger.d(orderInfo)
