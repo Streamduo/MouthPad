@@ -19,8 +19,13 @@ class WarehouseQueryListAdapter(layoutResId: Int) :
         rvStuffList.layoutManager = LinearLayoutManager(context)
         val stuffListAdapter = WarehouseSmallListAdapter(R.layout.item_warehouse_stuff_list_small)
         rvStuffList.adapter = stuffListAdapter
-        holder.setVisible(R.id.te_delete, isDelete)
-        holder.setVisible(R.id.te_check, isCheck)
+        if (item.isApproval == "0") {
+            holder.setGone(R.id.te_delete, false)
+            holder.setGone(R.id.te_check, false)
+        } else {
+            holder.setGone(R.id.te_delete, false)
+            holder.setGone(R.id.te_check, false)
+        }
         item.apply {
             holder.setText(R.id.te_business_type, businessType)
             holder.setText(R.id.te_storehouse, warehouseName)

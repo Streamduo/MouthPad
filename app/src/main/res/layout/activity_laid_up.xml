@@ -21,39 +21,29 @@
         <TextView
             android:id="@+id/te_add"
             style="@style/CurrentText"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/distance_dp_90"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text="新增" />
-
-        <TextView
-            android:id="@+id/te_delete"
-            style="@style/CurrentText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/distance_dp_10"
-            android:layout_marginEnd="@dimen/distance_dp_10"
-            android:layout_weight="1"
-            android:text="删除" />
 
         <TextView
             android:id="@+id/te_save"
             style="@style/CurrentText"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/distance_dp_90"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/distance_dp_10"
-            android:layout_weight="1"
+            android:layout_marginStart="@dimen/distance_dp_15"
             android:text="保存"
             android:visibility="gone"
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/te_verify"
+            android:id="@+id/te_query"
             style="@style/CurrentText"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/distance_dp_90"
+            android:layout_marginStart="@dimen/distance_dp_15"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="审核" />
+            android:layout_marginEnd="@dimen/distance_dp_10"
+            android:text="查询"/>
+
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -73,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/distance_dp_20"
-                android:text="表头"
+                android:text="基本信息"
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/distance_dp_15"
                 android:visibility="gone"
@@ -102,16 +92,16 @@
                     android:gravity="start"
                     android:text="业务类型"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <Spinner
                     android:id="@+id/sp_business_type"
                     android:layout_width="@dimen/distance_dp_200"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_toEndOf="@+id/text_unit_price"
                     android:entries="@array/businessType"
-                    android:spinnerMode="dialog"
-                    android:layout_toEndOf="@+id/text_unit_price" />
+                    android:spinnerMode="dialog" />
 
                 <TextView
                     android:id="@+id/text_commodity_num"
@@ -124,7 +114,7 @@
                     android:gravity="start"
                     android:text="仓库名称"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <Spinner
                     android:id="@+id/sp_storehouse"
@@ -146,9 +136,9 @@
                     android:layout_alignEnd="@+id/text_ticket_station"
                     android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
-                    android:text="科室"
+                    android:text="科室名称"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <Spinner
                     android:id="@+id/sp_department"
@@ -171,7 +161,7 @@
                     android:gravity="start"
                     android:text="供货单位"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <EditText
                     android:id="@+id/te_delivery_unit"
@@ -185,7 +175,7 @@
                     android:hint="请输入供货单位"
                     android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_14" />
 
                 <TextView
                     android:id="@+id/text_ticket_time"
@@ -196,7 +186,7 @@
                     android:gravity="start"
                     android:text="发票日期"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <TextView
                     android:id="@+id/te_invoice_date"
@@ -210,7 +200,7 @@
                     android:hint="请选择发票日期"
                     android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_14" />
 
                 <TextView
                     android:id="@+id/text_commodity_specifications"
@@ -221,9 +211,9 @@
                     android:layout_alignEnd="@+id/text_ticket_time"
                     android:layout_marginTop="@dimen/distance_dp_15"
                     android:gravity="start"
-                    android:text="发票号"
+                    android:text="发票号码"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <EditText
                     android:id="@+id/te_receipt_number"
@@ -238,7 +228,7 @@
                     android:inputType="number"
                     android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_14" />
 
                 <TextView
                     android:id="@+id/text_prepared"
@@ -249,9 +239,9 @@
                     android:layout_alignEnd="@+id/text_ticket_time"
                     android:layout_marginTop="@dimen/distance_dp_5"
                     android:gravity="start"
-                    android:text="制单人"
+                    android:text="制单人员"
                     android:textColor="@color/app_text_99"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_15" />
 
                 <EditText
                     android:id="@+id/ed_prepared"
@@ -265,7 +255,7 @@
                     android:inputType="number"
                     android:paddingStart="@dimen/distance_dp_8"
                     android:textColor="@color/app_text_33"
-                    android:textSize="@dimen/distance_dp_12" />
+                    android:textSize="@dimen/distance_dp_14" />
 
             </RelativeLayout>
 
@@ -274,8 +264,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/distance_dp_20"
-                android:text="表体"
+                android:text="材料列表"
                 android:textColor="@color/color_black"
+                android:textSize="@dimen/distance_dp_15"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/te_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/distance_dp_50"
+                android:text="扫码添加材料"
+                android:textColor="@color/app_text_66"
                 android:textSize="@dimen/distance_dp_15"
                 android:visibility="gone"
                 tools:visibility="visible" />

@@ -79,4 +79,84 @@
         <item>8</item>
         <item>9</item>
     </string-array>
+    <string-array name="isApprovalCode">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="isApproval">
+        <item>否</item>
+        <item>是</item>
+    </string-array>
+    <string-array name="departmentAll">
+        <item>全部科室</item>
+        <item>特需特诊科</item>
+        <item>牙体牙髓病科</item>
+        <item>儿童口腔科</item>
+        <item>口腔正畸科</item>
+        <item>保健门诊</item>
+        <item>核酸检测门诊</item>
+        <item>实验室</item>
+        <item>党总支办公室</item>
+        <item>管理公共</item>
+        <item>医疗公共</item>
+    </string-array>
+    <string-array name="departmentCodeAll">
+        <item>""</item>
+        <item>1001</item>
+        <item>1002</item>
+        <item>1003</item>
+        <item>1004</item>
+        <item>1014</item>
+        <item>1030</item>
+        <item>2006</item>
+        <item>1009</item>
+        <item>8888</item>
+    </string-array>
+    <string-array name="storehouseAll">
+        <item>全部仓库</item>
+        <item>办公用品仓</item>
+        <item>低值材料仓</item>
+        <item>高值材料仓</item>
+        <item>二楼库房</item>
+        <item>三楼库房</item>
+        <item>信息化耗材仓</item>
+        <item>器械仓</item>
+    </string-array>
+    <string-array name="storehouseCodeAll">
+        <item>""</item>
+        <item>401</item>
+        <item>402</item>
+        <item>403</item>
+        <item>405</item>
+        <item>406</item>
+        <item>407</item>
+        <item>408</item>
+    </string-array>
+    <string-array name="businessTypeAll">
+        <item>全部类型</item>
+        <item>采购入库</item>
+        <item>自制品入库</item>
+        <item>科室领用</item>
+        <item>有偿调入</item>
+        <item>无偿调入</item>
+        <item>有偿调出</item>
+        <item>无偿调出</item>
+        <item>盘盈入库</item>
+        <item>盘亏出库</item>
+        <item>其他入库</item>
+    </string-array>
+    <string-array name="businessTypeCodeAll">
+        <item>""</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+
 </resources>

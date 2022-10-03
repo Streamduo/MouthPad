@@ -77,6 +77,10 @@ object TimeUtils {
         val format = SimpleDateFormat(TIME_YYYY_MM_DD_HH_MM)
         return format.format(date)
     }
+    fun getYearDay(date: Date): String? {
+        val format = SimpleDateFormat(TIME_YYYY_MM_DD)
+        return format.format(date)
+    }
 
     //string转date
     fun getStringToDate(date: String): Date? { //可根据需要自行截取数据显示

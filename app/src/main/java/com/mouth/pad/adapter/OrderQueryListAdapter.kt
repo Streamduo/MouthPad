@@ -20,13 +20,30 @@ class OrderQueryListAdapter(layoutResId: Int) :
         rvStuffList.layoutManager = LinearLayoutManager(context)
         val stuffListAdapter = OrderStuffSmallListAdapter(R.layout.item_stuff_list_small)
         rvStuffList.adapter = stuffListAdapter
-        holder.setVisible(R.id.te_delete, isDelete)
-        holder.setVisible(R.id.te_check, isCheck)
+        if (item.isApproval == "0") {
+            holder.setGone(R.id.te_delete, false)
+            holder.setGone(R.id.te_check, false)
+        } else {
+            holder.setGone(R.id.te_delete, false)
+            holder.setGone(R.id.te_check, false)
+        }
+
         item.apply {
             holder.setText(R.id.te_order_number, orderNo)
             holder.setText(R.id.te_order_date, createTime)
             holder.setText(R.id.te_total_order, orderAmount)
-            holder.setText(R.id.te_order_status, orderState)
+            when(orderState){
+                "0" -> {
+                    holder.setText(R.id.te_order_status, "未入库")
+                }
+                "1" -> {
+                    holder.setText(R.id.te_order_status, "入库中")
+                }
+                "2" -> {
+                    holder.setText(R.id.te_order_status, "已入库")
+                }
+            }
+
             holder.setText(R.id.te_department, deptName)
             holder.setText(R.id.te_delivery_unit, supplier)
             holder.setText(R.id.te_buyer, buyer)

@@ -24,13 +24,6 @@ import com.mouth.pad.utils.SpUtil
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_laid_up.*
-import kotlinx.android.synthetic.main.activity_laid_up.rl_haed
-import kotlinx.android.synthetic.main.activity_laid_up.rv_order_list
-import kotlinx.android.synthetic.main.activity_laid_up.sp_department
-import kotlinx.android.synthetic.main.activity_laid_up.te_add
-import kotlinx.android.synthetic.main.activity_laid_up.te_delete
-import kotlinx.android.synthetic.main.activity_laid_up.te_head
-import kotlinx.android.synthetic.main.activity_laid_up.te_verify
 import kotlinx.android.synthetic.main.layout_title.*
 
 //物资入库
@@ -126,12 +119,12 @@ class LaidUpActivity : BaseActivity() {
         }
         val type = booleanArrayOf(true, true, true, false, false, false)
         //时间选择器
-        val pvTime = TimePickerBuilder(this, onTimeSelectListener)
+        pvTime = TimePickerBuilder(this, onTimeSelectListener)
             .setType(type)
             .build()
 
         te_invoice_date.setOnSingleClickListener {
-            pvTime.show()
+            pvTime?.show()
         }
 
         te_add.setOnSingleClickListener {
@@ -140,17 +133,16 @@ class LaidUpActivity : BaseActivity() {
                 te_add.text = "扫码"
                 te_head.visibility = View.VISIBLE
                 rl_haed.visibility = View.VISIBLE
+                te_order_detail.visibility = View.VISIBLE
+                te_tips.visibility = View.VISIBLE
                 te_save.visibility = View.VISIBLE
             } else {
                 getPermissions()
             }
         }
-        te_delete.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this, 3)
-        }
-        //审核
-        te_verify.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this, 4)
+
+        te_query.setOnSingleClickListener {
+            QueryStorehouseListActivity.launchQueryStorehouseListActivity(this)
         }
         //保存
         te_save.setOnSingleClickListener {
@@ -223,6 +215,7 @@ class LaidUpActivity : BaseActivity() {
         allNetViewModel.insertStorehouse(storehouseInfo).observe(this, {
             if (it.isOk()) {
                 showToast("入库成功")
+                te_add.text = "新增"
                 sp_department.setSelection(0)
                 sp_storehouse.setSelection(0)
                 te_delivery_unit.setText("")
@@ -277,7 +270,7 @@ class LaidUpActivity : BaseActivity() {
         allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
             if (it.isOk()) {
                 it.data?.apply {
-                    te_order_detail.visibility = View.VISIBLE
+                    te_tips.visibility = View.GONE
                     rv_order_list.visibility = View.VISIBLE
                     warehouseStuffListAdapter.addData(this)
                 }

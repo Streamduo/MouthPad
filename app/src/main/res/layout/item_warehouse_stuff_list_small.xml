@@ -20,7 +20,7 @@
             android:layout_alignEnd="@+id/text_unit_price"
             android:text="材料"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_material"
@@ -29,7 +29,7 @@
             android:layout_marginStart="@dimen/distance_dp_20"
             android:layout_toEndOf="@+id/text_commodity_name"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:gravity="start"
             android:text="规格型号"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_specification"
@@ -52,7 +52,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_unit_price"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="扫码" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:gravity="start"
             android:text="数量"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_num"
@@ -77,7 +77,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_ticket_method"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="2022.02.23" />
 
         <TextView
@@ -91,7 +91,7 @@
             android:gravity="start"
             android:text="单价"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_price"
@@ -102,7 +102,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_ticket_station"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1号线西单站" />
 
         <TextView
@@ -116,7 +116,7 @@
             android:gravity="start"
             android:text="金额"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_amount"
@@ -127,7 +127,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_commodity_all_price"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
     </RelativeLayout>
 

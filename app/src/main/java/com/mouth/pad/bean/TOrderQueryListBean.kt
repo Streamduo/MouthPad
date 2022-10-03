@@ -1,9 +1,5 @@
 package com.mouth.pad.bean
 
-import android.os.Parcelable
-import kotlinx.android.parcel.IgnoredOnParcel
-import kotlinx.android.parcel.Parcelize
-
 /**
  * @Author wuxiao
  * @Date 2022-09-18 21:15:19
@@ -43,4 +39,9 @@ class TOrderQueryListBean(
     var createTime: String? = null,
     var orderAmount: String? = null,
     var orderState: String? = null,
+    /**
+     * 审核状态 0-未审核 1-已审核
+     */
+    //("审核状态 0-未审核 1-已审核")
+    var isApproval: String? = null
 )

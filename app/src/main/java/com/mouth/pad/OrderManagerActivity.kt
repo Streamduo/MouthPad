@@ -19,7 +19,6 @@ import com.mouth.pad.utils.SpUtil
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_order_manager.*
-import kotlinx.android.synthetic.main.activity_order_manager.te_delete
 import kotlinx.android.synthetic.main.layout_title_subtitle.*
 import java.util.*
 
@@ -82,16 +81,15 @@ class OrderManagerActivity : BaseActivity() {
                 te_add.text = "扫码"
                 te_head.visibility = View.VISIBLE
                 rl_haed.visibility = View.VISIBLE
+                te_search_result.visibility = View.VISIBLE
+                te_tips.visibility = View.VISIBLE
                 te_send.visibility = View.VISIBLE
             } else {
                 getPermissions()
             }
         }
         te_query.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,0)
-        }
-        te_delete.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,1)
+            QueryOrderListActivity.launchQueryOrderListActivity(this)
         }
         //发送
         te_send.setOnSingleClickListener {
@@ -130,12 +128,6 @@ class OrderManagerActivity : BaseActivity() {
             Logger.d(orderInfo)
             insertOrder(orderInfo)
         }
-
-        //审核
-        te_verify.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this,2)
-        }
-
     }
 
     private fun insertOrder(orderInfo: String) {
@@ -191,7 +183,7 @@ class OrderManagerActivity : BaseActivity() {
         allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
             if (it.isOk()) {
                 it.data?.apply{
-                    te_search_result.visibility = View.VISIBLE
+                    te_tips.visibility = View.GONE
                     rv_order_list.visibility = View.VISIBLE
                     orderListAdapter.addData(this)
                 }

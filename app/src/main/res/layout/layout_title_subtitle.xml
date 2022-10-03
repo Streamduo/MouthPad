@@ -40,6 +40,6 @@
         android:paddingEnd="@dimen/distance_dp_15"
         android:textColor="@color/color_white"
         android:textSize="@dimen/distance_dp_14"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

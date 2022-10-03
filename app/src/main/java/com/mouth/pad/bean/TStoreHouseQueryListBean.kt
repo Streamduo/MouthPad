@@ -60,6 +60,12 @@ class TStoreHouseQueryListBean(
      */
     var reviewer: String? = null,
 
+    /**
+     * 审核状态 0-未审核 1-已审核
+     */
+    //("审核状态 0-未审核 1-已审核")
+    var isApproval: String? = null,
+
     var receiptDetailList: MutableList<TReceiptDetail>? = null,
 
     )

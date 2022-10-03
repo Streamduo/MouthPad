@@ -14,21 +14,16 @@ import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.google.gson.Gson
 import com.mouth.pad.adapter.MaterialRequisitionStuffListAdapter
 import com.mouth.pad.base.BaseActivity
+import com.mouth.pad.bean.LoginUserBean
 import com.mouth.pad.bean.TConsumeDetail
 import com.mouth.pad.bean.TMaterialRequisition
 import com.mouth.pad.bean.TOrderDetail
+import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
+import com.mouth.pad.utils.SpUtil
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_material_requisition.*
-import kotlinx.android.synthetic.main.activity_material_requisition.rl_haed
-import kotlinx.android.synthetic.main.activity_material_requisition.rv_order_list
-import kotlinx.android.synthetic.main.activity_material_requisition.sp_department
-import kotlinx.android.synthetic.main.activity_material_requisition.sp_storehouse
-import kotlinx.android.synthetic.main.activity_material_requisition.te_add
-import kotlinx.android.synthetic.main.activity_material_requisition.te_delete
-import kotlinx.android.synthetic.main.activity_material_requisition.te_head
-import kotlinx.android.synthetic.main.activity_material_requisition.te_verify
 import kotlinx.android.synthetic.main.layout_title_subtitle.*
 import java.util.ArrayList
 
@@ -38,7 +33,7 @@ class MaterialRequisitionActivity : BaseActivity() {
     private var pvTime: TimePickerView? = null
     private val onTimeSelectListener = OnTimeSelectListener { date, v ->
         date?.let {
-            te_claim_date.text = TimeUtils.getYear(it)
+            te_claim_date.text = TimeUtils.getYearDay(it)
         }
         pvTime?.dismiss()
     }
@@ -53,6 +48,7 @@ class MaterialRequisitionActivity : BaseActivity() {
     private val materialRequisitionStuffListAdapter by lazy {
         MaterialRequisitionStuffListAdapter(R.layout.item_material_requisition_stuff_list)
     }
+    private var loginUserBean: LoginUserBean? = null
 
     override fun layoutId(): Int {
         return R.layout.activity_material_requisition
@@ -68,8 +64,10 @@ class MaterialRequisitionActivity : BaseActivity() {
             finish()
         }
         tv_subtitle.setOnSingleClickListener {
-            MaterialRequisitionRecordActivity.launchMaterialRequisitionRecordActivity(this)
+            QueryMaterialListActivity.launchQueryMaterialListActivity(this)
         }
+        loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
+        ed_claimant.setText(loginUserBean?.nickname)
         rv_order_list?.apply {
             layoutManager = LinearLayoutManager(this@MaterialRequisitionActivity)
             adapter = materialRequisitionStuffListAdapter
@@ -119,13 +117,12 @@ class MaterialRequisitionActivity : BaseActivity() {
                 te_add.text = "扫码"
                 te_head.visibility = View.VISIBLE
                 rl_haed.visibility = View.VISIBLE
+                te_search_result.visibility = View.VISIBLE
+                te_tips.visibility = View.VISIBLE
                 te_send.visibility = View.VISIBLE
             } else {
                 getPermissions()
             }
-        }
-        te_delete.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this, 5)
         }
         //发送
         te_send.setOnSingleClickListener {
@@ -172,10 +169,6 @@ class MaterialRequisitionActivity : BaseActivity() {
             Logger.d(json)
             insertTMaterialRequisition(json)
 
-        }
-        //审核
-        te_verify.setOnSingleClickListener {
-            VerticalListActivity.launchVerticalListActivity(this, 6)
         }
     }
 
@@ -239,7 +232,7 @@ class MaterialRequisitionActivity : BaseActivity() {
         allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
             if (it.isOk()) {
                 it.data?.apply {
-                    te_search_result.visibility = View.VISIBLE
+                    te_tips.visibility = View.GONE
                     rv_order_list.visibility = View.VISIBLE
                     materialRequisitionStuffListAdapter.addData(this)
                 }

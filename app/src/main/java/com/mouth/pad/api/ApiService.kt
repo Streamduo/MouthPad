@@ -1,10 +1,7 @@
 package com.mouth.pad.api
 
 
-import com.mouth.pad.bean.TMaterial
-import com.mouth.pad.bean.TMaterialRequisitionQueryListBean
-import com.mouth.pad.bean.TStoreHouseQueryListBean
-import com.mouth.pad.bean.TOrderQueryListBean
+import com.mouth.pad.bean.*
 import com.mouth.pad.net.HttpsCerUtils
 import com.mouth.pad.utils.Logger
 import io.reactivex.schedulers.Schedulers
@@ -83,6 +80,19 @@ interface ApiService {
     fun getAllOrder(): Call<Result<MutableList<TOrderQueryListBean>>>
 
     /**
+     * 查询全部订单（分页）
+     */
+    @GET("/tOrder/page")
+    fun getAllPageOrder(
+        @Query("buyer") buyer: String,
+        @Query("deptCode") deptCode: String,
+        @Query("orderDate") orderDate: String,
+        @Query("isApproval") isApproval: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): Call<Result<TorderPageListBean>>
+
+    /**
      * 删除订单
      */
     @POST("/tOrder/deleteBatchIds")
@@ -105,6 +115,20 @@ interface ApiService {
      */
     @GET("/tReceipt/getAll")
     fun getAllStorehouse(): Call<Result<MutableList<TStoreHouseQueryListBean>>>
+
+    /**
+     * 查询全部入库信息（分页）
+     */
+    @GET("/tReceipt/page")
+    fun getAllPageStorehouse(
+        @Query("applicant") applicant: String,
+        @Query("businessType") businessType: String,
+        @Query("deptCode") deptCode: String,
+        @Query("warehouseCode") warehouseCode: String,
+        @Query("isApproval") isApproval: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): Call<Result<TStoreHousePageListBean>>
 
     /**
      * 删除入库信息
@@ -130,6 +154,21 @@ interface ApiService {
      */
     @GET("/tConsume/getAll")
     fun getAllConsume(): Call<Result<MutableList<TMaterialRequisitionQueryListBean>>>
+
+    /**
+     * 查询全部物资请领信息（分页）
+     */
+    @GET("/tConsume/page")
+    fun getAllPageConsume(
+        @Query("applicant") applicant: String,
+        @Query("consumeDate") consumeDate: String,
+        @Query("deptCode") deptCode: String,
+        @Query("warehouseCode") warehouseCode: String,
+        @Query("isApproval") isApproval: String,
+        @Query("isConsume") isConsume: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): Call<Result<TMaterialPageListBean>>
 
     /**
      * 删除物资请领信息

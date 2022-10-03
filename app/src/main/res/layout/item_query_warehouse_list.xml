@@ -22,9 +22,9 @@
             android:id="@+id/te_head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="表头"
+            android:text="基本信息"
             android:textColor="@color/color_black"
-            android:textSize="@dimen/distance_dp_15" />
+            android:textSize="@dimen/distance_dp_18" />
 
         <TextView
             android:id="@+id/text_order_number"
@@ -33,10 +33,10 @@
             android:layout_below="@+id/te_head"
             android:layout_alignStart="@+id/text_delivery_unit"
             android:layout_alignEnd="@+id/text_delivery_unit"
-            android:layout_marginTop="@dimen/distance_dp_5"
+            android:layout_marginTop="@dimen/distance_dp_10"
             android:text="业务类型"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_business_type"
@@ -44,10 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/te_head"
             android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_5"
+            android:layout_marginTop="@dimen/distance_dp_10"
             android:layout_toEndOf="@+id/text_order_number"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:text="仓库名称"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_storehouse"
@@ -71,7 +71,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_order_date"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
 
@@ -83,9 +83,9 @@
             android:layout_alignStart="@+id/text_delivery_unit"
             android:layout_alignEnd="@+id/text_delivery_unit"
             android:layout_marginTop="@dimen/distance_dp_5"
-            android:text="科室"
+            android:text="科室名称"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_department"
@@ -96,7 +96,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_department"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
         <TextView
@@ -107,7 +107,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:text="供货单位"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_delivery_unit"
@@ -118,7 +118,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_delivery_unit"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
 
@@ -132,7 +132,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:text="发票日期"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_invoic_date"
@@ -143,7 +143,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_total_order"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
         <TextView
@@ -154,9 +154,9 @@
             android:layout_alignStart="@+id/text_delivery_unit"
             android:layout_alignEnd="@+id/text_delivery_unit"
             android:layout_marginTop="@dimen/distance_dp_5"
-            android:text="发票号"
+            android:text="发票号码"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_invoice_num"
@@ -167,7 +167,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_total_order"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
         <TextView
@@ -180,7 +180,7 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:text="创建时间"
             android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_12" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_create_date"
@@ -191,30 +191,27 @@
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_order_date"
             android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_12"
+            android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
 
         <TextView
             android:id="@+id/te_delete"
             style="@style/CurrentText"
-            android:layout_width="@dimen/distance_dp_50"
-            android:layout_height="@dimen/distance_dp_20"
-            android:layout_alignParentEnd="true"
+            android:layout_width="@dimen/distance_dp_60"
+            android:layout_height="@dimen/distance_dp_25"
             android:layout_marginStart="@dimen/distance_dp_10"
-            android:layout_marginTop="@dimen/distance_dp_5"
             android:text="删除"
+            android:layout_alignParentEnd="true"
             android:visibility="gone"
             tools:visibility="visible" />
 
         <TextView
             android:id="@+id/te_check"
             style="@style/CurrentText"
-            android:layout_width="@dimen/distance_dp_50"
-            android:layout_height="@dimen/distance_dp_20"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/distance_dp_10"
-            android:layout_marginTop="@dimen/distance_dp_5"
+            android:layout_width="@dimen/distance_dp_60"
+            android:layout_height="@dimen/distance_dp_25"
+            android:layout_toStartOf="@+id/te_delete"
             android:text="审核"
             android:visibility="gone"
             tools:visibility="visible" />
@@ -225,9 +222,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_create_date"
             android:layout_marginTop="@dimen/distance_dp_10"
-            android:text="表体"
+            android:text="材料信息"
             android:textColor="@color/color_black"
-            android:textSize="@dimen/distance_dp_15" />
+            android:textSize="@dimen/distance_dp_18" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_stuff_list"

@@ -46,7 +46,7 @@
             android:layout_alignStart="@+id/te_claimant"
             android:layout_alignEnd="@+id/te_claimant"
             android:layout_marginTop="@dimen/distance_dp_15"
-            android:text="科室"
+            android:text="科室名称"
             android:textColor="@color/app_text_33"
             android:textSize="@dimen/distance_dp_15" />
 
@@ -68,7 +68,7 @@
             android:layout_alignStart="@+id/te_claimant"
             android:layout_alignEnd="@+id/te_claimant"
             android:layout_marginTop="@dimen/distance_dp_15"
-            android:text="采购员"
+            android:text="采购人员"
             android:textColor="@color/app_text_33"
             android:textSize="@dimen/distance_dp_15" />
 
@@ -114,7 +114,7 @@
             android:layout_alignStart="@+id/te_claimant"
             android:layout_alignEnd="@+id/te_claimant"
             android:layout_marginTop="@dimen/distance_dp_15"
-            android:text="供应商"
+            android:text="供应厂商"
             android:textColor="@color/app_text_33"
             android:textSize="@dimen/distance_dp_15" />
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="CurrentText">
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">@dimen/distance_dp_15</item>
         <item name="android:textColor">@color/color_white</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/shape_bg_1876ff_round_16</item>

@@ -41,7 +41,7 @@ class TMaterialRequisitionQueryListBean(
     /**
      * 申领人
      */
-    var claimant: String? = null,
+    var applicant: String? = null,
 
     /**
      * 审核人
@@ -49,5 +49,11 @@ class TMaterialRequisitionQueryListBean(
     var reviewer: String? = null,
 
     var consumeDetailList: MutableList<TConsumeDetail>? = null,
+
+    /**
+     * 审核状态 0-未审核 1-已审核
+     */
+    //("审核状态 0-未审核 1-已审核")
+    var isApproval: String? = null
 
     )

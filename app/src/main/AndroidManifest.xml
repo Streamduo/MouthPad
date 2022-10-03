@@ -52,6 +52,18 @@
         <activity
             android:name=".MaterialRequisitionRecordActivity"
             android:exported="true" />
+        <activity
+            android:name=".QueryOrderListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true" />
+        <activity
+            android:name=".QueryStorehouseListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true" />
+        <activity
+            android:name=".QueryMaterialListActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:exported="true" />
 
         <meta-data
             android:name="com.mouth.pad.utils.HttpsGlideModule"

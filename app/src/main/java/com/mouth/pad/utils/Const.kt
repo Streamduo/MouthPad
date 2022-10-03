@@ -31,4 +31,6 @@ object Const {
     //用户登录bean
     const val LOGIN_USER_BEAN = "loginUserBean"
 
+    const val PAGE_SIZE = 10
+
 }
