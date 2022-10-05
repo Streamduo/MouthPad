@@ -158,6 +158,7 @@ class QueryMaterialListActivity : BaseActivity() {
         }
         //重置
         te_reset.setOnSingleClickListener {
+            te_search_result.visibility = View.GONE
             materialRequisitionQueryListAdapter.data.clear()
             materialRequisitionQueryListAdapter.notifyDataSetChanged()
             ed_creater.setText(loginUserBean?.nickname)
@@ -172,7 +173,7 @@ class QueryMaterialListActivity : BaseActivity() {
             currentIndex = 1
             getQueryDate()
         }
-
+        materialRequisitionQueryListAdapter.addChildClickViewIds(R.id.te_delete, R.id.te_check)
         materialRequisitionQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = materialRequisitionQueryListAdapter.getItem(position)
             when (view.id) {
@@ -238,6 +239,7 @@ class QueryMaterialListActivity : BaseActivity() {
         ).observe(this, {
             if (it.isOk()) {
                 if (!it.data?.rows.isNullOrEmpty()) {
+                    te_search_result.visibility = View.VISIBLE
                     if (currentIndex == 1) {
                         materialRequisitionQueryListAdapter.setNewInstance(it.data?.rows)
                     } else {

@@ -19,9 +19,15 @@ import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Const.PAGE_SIZE
 import com.mouth.pad.utils.SpUtil
 import com.mouth.pad.view.CurrencyDialog
+import kotlinx.android.synthetic.main.activity_query_material_list.*
 import kotlinx.android.synthetic.main.activity_query_order_list.*
+import kotlinx.android.synthetic.main.activity_query_order_list.rv_refresh_list
 import kotlinx.android.synthetic.main.activity_query_order_list.sp_department
+import kotlinx.android.synthetic.main.activity_query_order_list.sp_isApproval
+import kotlinx.android.synthetic.main.activity_query_order_list.srl_refresh
 import kotlinx.android.synthetic.main.activity_query_order_list.te_query
+import kotlinx.android.synthetic.main.activity_query_order_list.te_reset
+import kotlinx.android.synthetic.main.activity_query_order_list.te_search_result
 import kotlinx.android.synthetic.main.layout_title_subtitle.*
 
 //订单查询
@@ -125,6 +131,7 @@ class QueryOrderListActivity : BaseActivity() {
         }
         //重置
         te_reset.setOnSingleClickListener {
+            te_search_result.visibility = View.GONE
             orderQueryListAdapter.data.clear()
             orderQueryListAdapter.notifyDataSetChanged()
             ed_buyer.setText(loginUserBean?.nickname)
@@ -137,7 +144,7 @@ class QueryOrderListActivity : BaseActivity() {
             currentIndex = 1
             getQueryDate()
         }
-
+        orderQueryListAdapter.addChildClickViewIds(R.id.te_delete, R.id.te_check)
         orderQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = orderQueryListAdapter.getItem(position)
             when (view.id) {
@@ -201,17 +208,18 @@ class QueryOrderListActivity : BaseActivity() {
         ).observe(this, {
             if (it.isOk()) {
                 if (!it.data?.rows.isNullOrEmpty()) {
+                    te_search_result.visibility = View.VISIBLE
                     if (currentIndex == 1) {
                         orderQueryListAdapter.setNewInstance(it.data?.rows)
                     } else {
                         orderQueryListAdapter.addData(it.data?.rows!!)
                     }
-                }else{
+                } else {
                     if (currentIndex == 1) {
                         showToast("暂无相关记录")
                         orderQueryListAdapter.data.clear()
                         orderQueryListAdapter.notifyDataSetChanged()
-                    }else{
+                    } else {
                         showToast("没有更多了")
                     }
                 }

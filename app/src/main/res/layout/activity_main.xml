@@ -122,6 +122,7 @@
         android:background="@drawable/shape_bg_white_round"
         android:gravity="center"
         android:text="@string/login_out"
+        android:textSize="@dimen/distance_dp_15"
         android:textColor="@color/app_text_99"
         android:visibility="gone" />
 </LinearLayout>

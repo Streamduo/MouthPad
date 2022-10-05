@@ -9,6 +9,7 @@ import com.mouth.pad.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_inventory_query.*
 import kotlinx.android.synthetic.main.layout_title.*
 
+//库存查询
 class InventoryQueryActivity : BaseActivity() {
 
     override fun layoutId(): Int {

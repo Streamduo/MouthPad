@@ -20,10 +20,17 @@ import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Const.PAGE_SIZE
 import com.mouth.pad.utils.SpUtil
 import com.mouth.pad.view.CurrencyDialog
+import kotlinx.android.synthetic.main.activity_query_order_list.*
 import kotlinx.android.synthetic.main.activity_query_storehouse_list.*
+import kotlinx.android.synthetic.main.activity_query_storehouse_list.rv_refresh_list
 import kotlinx.android.synthetic.main.activity_query_storehouse_list.sp_business_type
 import kotlinx.android.synthetic.main.activity_query_storehouse_list.sp_department
+import kotlinx.android.synthetic.main.activity_query_storehouse_list.sp_isApproval
 import kotlinx.android.synthetic.main.activity_query_storehouse_list.sp_storehouse
+import kotlinx.android.synthetic.main.activity_query_storehouse_list.srl_refresh
+import kotlinx.android.synthetic.main.activity_query_storehouse_list.te_query
+import kotlinx.android.synthetic.main.activity_query_storehouse_list.te_reset
+import kotlinx.android.synthetic.main.activity_query_storehouse_list.te_search_result
 import kotlinx.android.synthetic.main.layout_title_subtitle.*
 
 //入库信息查询
@@ -149,6 +156,7 @@ class QueryStorehouseListActivity : BaseActivity() {
         }
         //重置
         te_reset.setOnSingleClickListener {
+            te_search_result.visibility = View.GONE
             warehouseQueryListAdapter.data.clear()
             warehouseQueryListAdapter.notifyDataSetChanged()
             ed_creater.setText(loginUserBean?.nickname)
@@ -162,6 +170,7 @@ class QueryStorehouseListActivity : BaseActivity() {
             getQueryDate()
         }
 
+        warehouseQueryListAdapter.addChildClickViewIds(R.id.te_delete, R.id.te_check)
         warehouseQueryListAdapter.setOnItemChildClickListener { _, view, position ->
             val item = warehouseQueryListAdapter.getItem(position)
             when (view.id) {
@@ -228,6 +237,7 @@ class QueryStorehouseListActivity : BaseActivity() {
         ).observe(this, {
             if (it.isOk()) {
                 if (!it.data?.rows.isNullOrEmpty()) {
+                    te_search_result.visibility = View.VISIBLE
                     if (currentIndex == 1) {
                         warehouseQueryListAdapter.setNewInstance(it.data?.rows)
                     } else {

@@ -10,208 +10,232 @@
 
     <include layout="@layout/layout_title_subtitle" />
 
-    <TextView
-        android:id="@+id/te_head"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/distance_dp_20"
-        android:layout_marginTop="@dimen/distance_dp_15"
-        android:text="查询条件"
-        android:textColor="@color/color_black"
-        android:textSize="@dimen/distance_dp_15"
-        android:visibility="gone"
-        tools:visibility="visible" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/distance_dp_10"
-        android:background="@drawable/shape_bg_white_round_radius5"
-        android:paddingStart="@dimen/distance_dp_15"
-        android:paddingTop="@dimen/distance_dp_10"
-        android:paddingEnd="@dimen/distance_dp_15"
-        android:paddingBottom="@dimen/distance_dp_10">
-
-        <TextView
-            android:id="@+id/text_commodity_all_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_commodity_num"
-            android:layout_alignStart="@+id/text_ticket_station"
-            android:layout_alignEnd="@+id/text_ticket_station"
-            android:layout_marginTop="@dimen/distance_dp_5"
-            android:gravity="start"
-            android:text="科室名称"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <Spinner
-            android:id="@+id/sp_department"
-            android:layout_width="@dimen/distance_dp_200"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_commodity_num"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_toEndOf="@+id/text_commodity_all_price"
-            android:entries="@array/departmentAll"
-            android:spinnerMode="dialog" />
-
-        <TextView
-            android:id="@+id/text_ticket_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_commodity_all_price"
-            android:layout_marginTop="@dimen/distance_dp_15"
-            android:gravity="start"
-            android:text="仓库名称"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <Spinner
-            android:id="@+id/sp_storehouse"
-            android:layout_width="@dimen/distance_dp_200"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_commodity_all_price"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_10"
-            android:layout_toEndOf="@+id/text_ticket_time"
-            android:entries="@array/storehouseAll"
-            android:spinnerMode="dialog" />
-
-        <TextView
-            android:id="@+id/text_ticket_station"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_ticket_time"
-            android:layout_marginTop="@dimen/distance_dp_15"
-            android:gravity="start"
-            android:text="申请人员"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <EditText
-            android:id="@+id/ed_creater"
-            android:layout_width="@dimen/distance_dp_200"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_ticket_time"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_10"
-            android:layout_toEndOf="@+id/text_ticket_station"
-            android:background="@color/color_white"
-            android:hint="请输入申请人员"
-            android:paddingStart="@dimen/distance_dp_8"
-            android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_14" />
-
-        <TextView
-            android:id="@+id/text_material_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_ticket_station"
-            android:layout_marginTop="@dimen/distance_dp_15"
-            android:gravity="start"
-            android:text="申请日期"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <TextView
-            android:id="@+id/te_material_date"
-            android:layout_width="@dimen/distance_dp_200"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_ticket_station"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_10"
-            android:layout_toEndOf="@+id/text_material_time"
-            android:gravity="center_vertical"
-            android:hint="请选择申请日期"
-            android:paddingStart="@dimen/distance_dp_8"
-            android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_14" />
-
-        <TextView
-            android:id="@+id/text_commodity_specifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_material_time"
-            android:layout_alignStart="@+id/text_ticket_time"
-            android:layout_alignEnd="@+id/text_ticket_time"
-            android:layout_marginTop="@dimen/distance_dp_15"
-            android:gravity="start"
-            android:text="是否审核"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <Spinner
-            android:id="@+id/sp_isApproval"
-            android:layout_width="@dimen/distance_dp_200"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_material_time"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_10"
-            android:layout_toEndOf="@+id/text_commodity_specifications"
-            android:entries="@array/isApproval"
-            android:spinnerMode="dropdown" />
-        <TextView
-            android:id="@+id/text_isConsume"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_commodity_specifications"
-            android:layout_alignStart="@+id/text_ticket_time"
-            android:layout_alignEnd="@+id/text_ticket_time"
-            android:layout_marginTop="@dimen/distance_dp_15"
-            android:gravity="start"
-            android:text="是否出库"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-
-        <Spinner
-            android:id="@+id/sp_isConsume"
-            android:layout_width="@dimen/distance_dp_200"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_commodity_specifications"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_10"
-            android:layout_toEndOf="@+id/text_isConsume"
-            android:entries="@array/isApproval"
-            android:spinnerMode="dropdown" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/distance_dp_35"
-            android:layout_below="@+id/text_isConsume"
-            android:layout_marginTop="@dimen/distance_dp_15">
-
-            <TextView
-                android:id="@+id/te_reset"
-                style="@style/CurrentText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="重置" />
-
-            <TextView
-                android:id="@+id/te_query"
-                style="@style/CurrentText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/distance_dp_50"
-                android:layout_marginEnd="@dimen/distance_dp_10"
-                android:layout_weight="1"
-                android:text="查询" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/srl_refresh"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_refresh_list"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/distance_dp_10"
-            android:overScrollMode="never" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            <TextView
+                android:id="@+id/te_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/distance_dp_20"
+                android:layout_marginTop="@dimen/distance_dp_15"
+                android:text="查询条件"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/distance_dp_18"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/distance_dp_10"
+                android:background="@drawable/shape_bg_white_round_radius5"
+                android:paddingStart="@dimen/distance_dp_15"
+                android:paddingTop="@dimen/distance_dp_10"
+                android:paddingEnd="@dimen/distance_dp_15"
+                android:paddingBottom="@dimen/distance_dp_10">
+
+                <TextView
+                    android:id="@+id/text_commodity_all_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_commodity_num"
+                    android:layout_alignStart="@+id/text_ticket_station"
+                    android:layout_alignEnd="@+id/text_ticket_station"
+                    android:layout_marginTop="@dimen/distance_dp_5"
+                    android:gravity="start"
+                    android:text="科室名称"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_15" />
+
+                <Spinner
+                    android:id="@+id/sp_department"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_commodity_num"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_toEndOf="@+id/text_commodity_all_price"
+                    android:entries="@array/departmentAll"
+                    android:spinnerMode="dialog" />
+
+                <TextView
+                    android:id="@+id/text_ticket_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_commodity_all_price"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:gravity="start"
+                    android:text="仓库名称"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_15" />
+
+                <Spinner
+                    android:id="@+id/sp_storehouse"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_commodity_all_price"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_marginTop="@dimen/distance_dp_10"
+                    android:layout_toEndOf="@+id/text_ticket_time"
+                    android:entries="@array/storehouseAll"
+                    android:spinnerMode="dialog" />
+
+                <TextView
+                    android:id="@+id/text_ticket_station"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_ticket_time"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:gravity="start"
+                    android:text="申请人员"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_15" />
+
+                <EditText
+                    android:id="@+id/ed_creater"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_ticket_time"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_marginTop="@dimen/distance_dp_10"
+                    android:layout_toEndOf="@+id/text_ticket_station"
+                    android:background="@color/color_white"
+                    android:hint="请输入申请人员"
+                    android:paddingStart="@dimen/distance_dp_8"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:id="@+id/text_material_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_ticket_station"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:gravity="start"
+                    android:text="申请日期"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_15" />
+
+                <TextView
+                    android:id="@+id/te_material_date"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_ticket_station"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_marginTop="@dimen/distance_dp_10"
+                    android:layout_toEndOf="@+id/text_material_time"
+                    android:gravity="center_vertical"
+                    android:hint="请选择申请日期"
+                    android:paddingStart="@dimen/distance_dp_8"
+                    android:textColor="@color/app_text_33"
+                    android:textSize="@dimen/distance_dp_14" />
+
+                <TextView
+                    android:id="@+id/text_commodity_specifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_material_time"
+                    android:layout_alignStart="@+id/text_ticket_time"
+                    android:layout_alignEnd="@+id/text_ticket_time"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:gravity="start"
+                    android:text="是否审核"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_15" />
+
+                <Spinner
+                    android:id="@+id/sp_isApproval"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_material_time"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_marginTop="@dimen/distance_dp_10"
+                    android:layout_toEndOf="@+id/text_commodity_specifications"
+                    android:entries="@array/isApproval"
+                    android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/text_isConsume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_commodity_specifications"
+                    android:layout_alignStart="@+id/text_ticket_time"
+                    android:layout_alignEnd="@+id/text_ticket_time"
+                    android:layout_marginTop="@dimen/distance_dp_15"
+                    android:gravity="start"
+                    android:text="是否出库"
+                    android:textColor="@color/app_text_99"
+                    android:textSize="@dimen/distance_dp_15" />
+
+                <Spinner
+                    android:id="@+id/sp_isConsume"
+                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_height="@dimen/distance_dp_30"
+                    android:layout_below="@+id/text_commodity_specifications"
+                    android:layout_marginStart="@dimen/distance_dp_20"
+                    android:layout_marginTop="@dimen/distance_dp_10"
+                    android:layout_toEndOf="@+id/text_isConsume"
+                    android:entries="@array/isApproval"
+                    android:spinnerMode="dropdown" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/distance_dp_35"
+                    android:layout_below="@+id/text_isConsume"
+                    android:layout_marginTop="@dimen/distance_dp_15">
+
+                    <TextView
+                        android:id="@+id/te_reset"
+                        style="@style/CurrentText"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="重置" />
+
+                    <TextView
+                        android:id="@+id/te_query"
+                        style="@style/CurrentText"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/distance_dp_50"
+                        android:layout_marginEnd="@dimen/distance_dp_10"
+                        android:layout_weight="1"
+                        android:text="查询" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/te_search_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/distance_dp_5"
+                android:layout_marginStart="@dimen/distance_dp_20"
+                android:text="查询结果"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/distance_dp_18"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/srl_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_refresh_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/distance_dp_10"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
