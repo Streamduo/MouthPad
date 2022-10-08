@@ -129,7 +129,7 @@ class LaidUpActivity : BaseActivity() {
 
         te_add.setOnSingleClickListener {
             val text = te_add.text
-            if (text == "新增") {
+            if (text == "添加") {
                 te_add.text = "扫码"
                 te_head.visibility = View.VISIBLE
                 rl_haed.visibility = View.VISIBLE

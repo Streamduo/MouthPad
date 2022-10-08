@@ -92,7 +92,7 @@
                         android:hint="请输入采购人员"
                         android:paddingStart="@dimen/distance_dp_8"
                         android:textColor="@color/app_text_33"
-                        android:textSize="@dimen/distance_dp_14" />
+                        android:textSize="@dimen/distance_dp_15" />
 
                     <TextView
                         android:id="@+id/text_ticket_time"
@@ -117,7 +117,7 @@
                         android:hint="请选择订单日期"
                         android:paddingStart="@dimen/distance_dp_8"
                         android:textColor="@color/app_text_33"
-                        android:textSize="@dimen/distance_dp_14" />
+                        android:textSize="@dimen/distance_dp_15" />
 
                     <TextView
                         android:id="@+id/text_commodity_specifications"

@@ -11,12 +11,14 @@ class ConsumptionQueryListAdapter(layoutResId: Int) : BaseQuickAdapter<TConsumpt
 
     override fun convert(holder: BaseViewHolder, item: TConsumptionQueryDetail) {
         item.apply {
+            holder.setText(R.id.te_select_storehouse, warehouseName)
             holder.setText(R.id.te_material_num, materiaCode)
             holder.setText(R.id.te_material, materialName)
             holder.setText(R.id.te_specification, model)
             holder.setText(R.id.te_picking_department, deptName)
             holder.setText(R.id.te_total_size, consumeNum)
             holder.setText(R.id.te_amount, unitPrice)
+            holder.setText(R.id.te_out_date, createTime)
         }
     }
 }

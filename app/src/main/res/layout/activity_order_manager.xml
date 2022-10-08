@@ -135,7 +135,7 @@
             android:layout_toEndOf="@+id/te_warehouse"
             android:background="@color/color_white"
             android:hint="请输入供货单位"
-            android:textSize="@dimen/distance_dp_14" />
+            android:textSize="@dimen/distance_dp_15" />
 
         <TextView
             android:id="@+id/te_claimant"
@@ -157,7 +157,7 @@
             android:layout_toEndOf="@+id/te_warehouse"
             android:background="@color/color_white"
             android:hint="请输入采购员"
-            android:textSize="@dimen/distance_dp_14" />
+            android:textSize="@dimen/distance_dp_15" />
 
     </RelativeLayout>
 

@@ -14,6 +14,7 @@ class InventoryQueryListAdapter(layoutResId: Int) : BaseQuickAdapter<TInventoryQ
         item.apply {
             holder.setText(R.id.te_select_storehouse, warehouseName)
             holder.setText(R.id.te_material_code, materialCode)
+            holder.setText(R.id.te_material, materialName)
             holder.setText(R.id.te_specifications, model)
             holder.setText(R.id.te_price, unitPrice)
             holder.setText(R.id.te_balance_quantity, stockNum)

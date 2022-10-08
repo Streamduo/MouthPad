@@ -121,7 +121,7 @@
             android:layout_alignEnd="@+id/text_unit_price"
             android:layout_marginTop="@dimen/distance_dp_5"
             android:gravity="start"
-            android:text="单价"
+            android:text="材料单价"
             android:textColor="@color/app_text_99"
             android:textSize="@dimen/distance_dp_15" />
 
