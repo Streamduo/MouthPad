@@ -14,7 +14,6 @@ import retrofit2.http.Query
 
 class AllNetViewModel {
 
-
     //登录
     fun login(
         userCode: String,
@@ -66,7 +65,8 @@ class AllNetViewModel {
         val liveDatas =
             MutableLiveData<com.mouth.pad.api.Result<TorderPageListBean>>()
         ApiService.get().getAllPageOrder(
-            buyer, deptCode, orderDate, isApproval, pageNum, pageSize).enqueue(LiveDataCallback(liveDatas))
+            buyer, deptCode, orderDate, isApproval, pageNum, pageSize
+        ).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }
 
@@ -135,6 +135,20 @@ class AllNetViewModel {
         return liveDatas
     }
 
+    //查询材料库存信息（分页）
+    fun getAllStuffPageStorehouse(
+        materialCode: String?,
+        warehouseCode: String,
+        pageNum: Int,
+        pageSize: Int
+    ): MutableLiveData<com.mouth.pad.api.Result<InventoryQueryPageListBean>> {
+        val liveDatas =
+            MutableLiveData<com.mouth.pad.api.Result<InventoryQueryPageListBean>>()
+        ApiService.get().getAllStuffPageStorehouse(materialCode, warehouseCode, pageNum, pageSize)
+            .enqueue(LiveDataCallback(liveDatas))
+        return liveDatas
+    }
+
     //审核入库
     fun approvalStorehouse(
         id: String?,
@@ -182,6 +196,23 @@ class AllNetViewModel {
         ApiService.get().getAllPageConsume(
             applicant, consumeDate, deptCode,
             warehouseCode, isApproval, isConsume, pageNum, pageSize
+        ).enqueue(LiveDataCallback(liveDatas))
+        return liveDatas
+    }
+
+    //消耗查询（分页）
+    fun getAllConsumptionQuery(
+        deptCode: String,
+        materialCode: String?,
+        warehouseCode: String,
+        pageNum: Int,
+        pageSize: Int
+    ): MutableLiveData<com.mouth.pad.api.Result<ConsumptionQueryPageListBean>> {
+        val liveDatas =
+            MutableLiveData<com.mouth.pad.api.Result<ConsumptionQueryPageListBean>>()
+        ApiService.get().getAllConsumptionQuery(
+            deptCode, materialCode,
+            warehouseCode, pageNum, pageSize
         ).enqueue(LiveDataCallback(liveDatas))
         return liveDatas
     }

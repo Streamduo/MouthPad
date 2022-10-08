@@ -131,6 +131,17 @@ interface ApiService {
     ): Call<Result<TStoreHousePageListBean>>
 
     /**
+     * 查询材料库存信息（分页）
+     */
+    @GET("/tReceiptStore/page")
+    fun getAllStuffPageStorehouse(
+        @Query("materialCode") materialCode: String?,
+        @Query("warehouseCode") warehouseCode: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): Call<Result<InventoryQueryPageListBean>>
+
+    /**
      * 删除入库信息
      */
     @POST("/tReceipt/deleteBatchIds")
@@ -169,6 +180,18 @@ interface ApiService {
         @Query("pageNum") pageNum: Int,
         @Query("pageSize") pageSize: Int
     ): Call<Result<TMaterialPageListBean>>
+
+    /**
+     * 消耗查询（分页）
+     */
+    @GET("/tConsumeList/page")
+    fun getAllConsumptionQuery(
+        @Query("deptCode") deptCode: String,
+        @Query("materialCode") materialCode: String?,
+        @Query("warehouseCode") warehouseCode: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): Call<Result<ConsumptionQueryPageListBean>>
 
     /**
      * 删除物资请领信息
