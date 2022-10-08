@@ -47,13 +47,13 @@ class OrderManagerActivity : BaseActivity() {
         title_back.setOnSingleClickListener {
             finish()
         }
-        tv_subtitle.text = "跟踪管理"
-        tv_subtitle.setOnSingleClickListener {
-            TrackingManagementActivity.launchTrackingManagementActivity(this)
-        }
+//        tv_subtitle.text = "跟踪管理"
+//        tv_subtitle.setOnSingleClickListener {
+//            TrackingManagementActivity.launchTrackingManagementActivity(this)
+//        }
 
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-        ed_claimant.setText(loginUserBean?.nickname)
+        ed_claimant.setText(loginUserBean?.userName)
 
         rv_order_list?.apply {
             layoutManager = LinearLayoutManager(this@OrderManagerActivity)
@@ -113,16 +113,24 @@ class OrderManagerActivity : BaseActivity() {
                 return@setOnSingleClickListener
             }
             val orderDetailList: MutableList<TOrderDetail> = ArrayList()
+
             for (tMaterial in data) {
                 tMaterial.apply {
                     val tOrderDetail = TOrderDetail(
-                        id, createTime, mateTypeCode, invName, invModel,
-                        planPrice, unitName, stockNum, balanceAmount, noWarehousingNum
+                        id, invCode, invName, invModel,
+                        planPrice, unitName, "1", balanceAmount, noWarehousingNum
                     )
                     orderDetailList.add(tOrderDetail)
                 }
             }
-            val tOrder = TOrder(selectDeptCode, selectDeptName, buyer, supplier, orderDetailList)
+            val tOrder = TOrder(
+                loginUserBean?.userName,
+                selectDeptCode,
+                selectDeptName,
+                buyer,
+                supplier,
+                orderDetailList
+            )
             val gson = Gson()
             val orderInfo = gson.toJson(tOrder)
             Logger.d(orderInfo)
@@ -137,7 +145,7 @@ class OrderManagerActivity : BaseActivity() {
                 te_add.text = "添加"
                 sp_department.setSelection(0)
                 ed_delivery_unit.setText("")
-                ed_claimant.setText(loginUserBean?.nickname)
+                ed_claimant.setText(loginUserBean?.userName)
                 te_head.visibility = View.GONE
                 rl_haed.visibility = View.GONE
                 te_send.visibility = View.GONE
@@ -182,7 +190,7 @@ class OrderManagerActivity : BaseActivity() {
     private fun selectByMaterialCode(materialCode: String?) {
         allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
             if (it.isOk()) {
-                it.data?.apply{
+                it.data?.apply {
                     te_tips.visibility = View.GONE
                     rv_order_list.visibility = View.VISIBLE
                     orderListAdapter.addData(this)

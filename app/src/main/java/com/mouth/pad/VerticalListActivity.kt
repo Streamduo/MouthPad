@@ -128,7 +128,7 @@ class VerticalListActivity : BaseActivity() {
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalOrder(item.id, position, loginUserBean?.nickname)
+                            approvalOrder(item.id, position, loginUserBean?.userName)
                         }
 
                     })
@@ -167,7 +167,7 @@ class VerticalListActivity : BaseActivity() {
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalStorehouse(item.id, position, loginUserBean?.nickname)
+                            approvalStorehouse(item.id, position, loginUserBean?.userName)
                         }
 
                     })
@@ -206,7 +206,7 @@ class VerticalListActivity : BaseActivity() {
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalConsume(item.id, position, loginUserBean?.nickname)
+                            approvalConsume(item.id, position, loginUserBean?.userName)
                         }
 
                     })

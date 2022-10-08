@@ -5,7 +5,10 @@ package com.mouth.pad.bean
  * @Date 2022-09-18 21:15:19
  * @Description: 物资请领信息表
  */
-class TMaterialRequisition (
+class TMaterialRequisition(
+
+    //创建人
+    var createBy: String? = null,
 
     /**
      * 请领日期

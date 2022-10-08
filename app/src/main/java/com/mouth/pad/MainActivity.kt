@@ -61,7 +61,7 @@ class MainActivity : BaseActivity() {
 
     private fun setUserInfo(loginUserBean: LoginUserBean?){
         loginUserBean?.apply {
-            te_user_name.text = nickname
+            te_user_name.text = userName
         }
         if (LoginActivity.isValidity()){
             te_login_out.visibility = View.VISIBLE

@@ -14,6 +14,20 @@ import retrofit2.http.Query
 
 class AllNetViewModel {
 
+
+    //登录
+    fun login(
+        userCode: String,
+        password: String
+    ): MutableLiveData<com.mouth.pad.api.Result<LoginUserBean>> {
+        val liveDatas = MutableLiveData<com.mouth.pad.api.Result<LoginUserBean>>()
+        val params = hashMapOf<String, Any?>()
+        params["userCode"] = userCode
+        params["password"] = password
+        ApiService.get().login(params).enqueue(LiveDataCallback(liveDatas))
+        return liveDatas
+    }
+
     //添加订单
     fun insertOrder(orderInfo: String): MutableLiveData<com.mouth.pad.api.Result<String>> {
         val liveDatas = MutableLiveData<com.mouth.pad.api.Result<String>>()

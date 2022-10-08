@@ -3,14 +3,11 @@
     <string name="net_error">网络连接失败，请检查网络后重试</string>
     <string name="server_error">网络连接失败，请检查网络后重试</string>
     <string name="please_login">登录</string>
-    <string name="prompt_phone">请输入手机号</string>
+    <string name="prompt_phone">请输入工号</string>
     <string name="prompt_password">请输入密码</string>
-    <string name="prompt_old_password">请输入旧密码</string>
-    <string name="prompt_new_password">请输入新密码</string>
-    <string name="second_put_password">再次输入新密码</string>
     <string name="title_login">登录</string>
-    <string name="phone_null">手机号不能为空</string>
-    <string name="phone_fail">手机号输入错误</string>
+    <string name="phone_null">工号不能为空</string>
+    <string name="phone_fail">工号输入错误</string>
     <string name="password_null">密码不能为空</string>
     <string name="login_out">退出登录</string>
 

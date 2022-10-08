@@ -20,6 +20,9 @@ import kotlin.random.Random
 class LoginActivity : BaseActivity() {
 
     var isClose: Boolean = true
+    private val allNetViewModel by lazy {
+        AllNetViewModel()
+    }
 
     override fun layoutId(): Int {
         return R.layout.activity_login
@@ -68,23 +71,12 @@ class LoginActivity : BaseActivity() {
                         te_login.isEnabled = false
                         return
                     }
-                    //判断是否符合手机号格式
-                    if (!InspectionFormatUtils.regexPhone(this)) {
-                        te_login.isEnabled = false
-                        return
-                    }
                 }
-
 
                 val passWord = ed_password.text.toString().trim()
                 passWord.apply {
                     //判断密码是否为空
                     if (isEmpty()) {
-                        te_login.isEnabled = false
-                        return
-                    }
-                    //判断位数是否合格
-                    if (length < Const.MINIMUM_PASSWORD_SIZE || length > Const.MAX_PASSWORD_SIZE) {
                         te_login.isEnabled = false
                         return
                     }
@@ -109,22 +101,12 @@ class LoginActivity : BaseActivity() {
                         te_login.isEnabled = false
                         return
                     }
-                    //判断是否符合手机号格式
-                    if (!InspectionFormatUtils.regexPhone(this)) {
-                        te_login.isEnabled = false
-                        return
-                    }
                 }
 
                 val str: String = s.toString().trim()
                 str.apply {
                     //判断密码是否为空
                     if (isEmpty()) {
-                        te_login.isEnabled = false
-                        return
-                    }
-                    //判断位数是否合格
-                    if (length < Const.MINIMUM_PASSWORD_SIZE || length > Const.MAX_PASSWORD_SIZE) {
                         te_login.isEnabled = false
                         return
                     }
@@ -138,7 +120,7 @@ class LoginActivity : BaseActivity() {
         te_login.setOnSingleClickListener {
             KeyboardUtils.hideKeyboard(te_login)
             val phoneNum = ed_phone.text.toString().trim()
-            var passWord = ed_password.text.toString().trim()
+            val passWord = ed_password.text.toString().trim()
             phoneNum.apply {
                 //判断输入的内容是否为空
                 if (isEmpty()) {
@@ -168,12 +150,18 @@ class LoginActivity : BaseActivity() {
 
     //密码登录
     private fun passwordLogin(mobile: String, userPwd: String) {
-        val nickNum = Random(10).nextInt(10)
-        val loginUserBean = LoginUserBean("Admin$nickNum", userPwd, mobile)
-        //保存登录信息
-        SpUtil.encode(Const.LOGIN_USER_BEAN, loginUserBean)
-        showLongToast("登录成功")
-        finish()
+          allNetViewModel.login(mobile,userPwd).observe(this,{
+              if (it.isOk()){
+                  //保存登录信息
+                  SpUtil.encode(Const.LOGIN_USER_BEAN, it.data)
+                  showLongToast("登录成功")
+                  finish()
+              }else{
+                  it.msg?.let { msg ->
+                      showLongToast(msg)
+                  }
+              }
+          })
     }
 
     override fun start() {
@@ -209,7 +197,7 @@ class LoginActivity : BaseActivity() {
         fun isValidity(): Boolean {
             val loginUserBean =
                 SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-            return loginUserBean?.phoneNum != null
+            return loginUserBean?.userId != null
         }
 
         fun toLogin(context: Context?) {

@@ -69,7 +69,7 @@ class LaidUpActivity : BaseActivity() {
             adapter = warehouseStuffListAdapter
         }
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-        ed_prepared.setText(loginUserBean?.nickname)
+        ed_prepared.setText(loginUserBean?.userName)
 
         val businessTypeCode = resources.getStringArray(R.array.businessTypeCode)
         val businessType = resources.getStringArray(R.array.businessType)
@@ -183,14 +183,15 @@ class LaidUpActivity : BaseActivity() {
             for (tMaterial in data) {
                 tMaterial.apply {
                     val tReceiptDetail = TReceiptDetail(
-                        id, createTime, mateTypeCode, invName, invModel,
-                        planPrice, unitName, stockNum, balanceAmount, noWarehousingNum
+                        id, invCode, invName, invModel,
+                        planPrice, unitName, "1", balanceAmount, noWarehousingNum
                     )
                     receiptDetailList.add(tReceiptDetail)
                 }
 
             }
             val tConsume = TStoreHouse(
+                loginUserBean?.userName,
                 selectBusinessType,
                 selectDeptCode,
                 selectDeptName,

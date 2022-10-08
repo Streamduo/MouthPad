@@ -67,7 +67,7 @@ class MaterialRequisitionActivity : BaseActivity() {
             QueryMaterialListActivity.launchQueryMaterialListActivity(this)
         }
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-        ed_claimant.setText(loginUserBean?.nickname)
+        ed_claimant.setText(loginUserBean?.userName)
         rv_order_list?.apply {
             layoutManager = LinearLayoutManager(this@MaterialRequisitionActivity)
             adapter = materialRequisitionStuffListAdapter
@@ -154,13 +154,13 @@ class MaterialRequisitionActivity : BaseActivity() {
             for (tMaterial in data) {
                 tMaterial.apply {
                     val tConsumeDetail = TConsumeDetail(
-                        id, createTime, mateTypeCode, invName, invModel,
-                        planPrice, unitName, stockNum, stockNum, noWarehousingNum
+                        id,  invCode, invName, invModel,
+                        planPrice, unitName, stockNum, "1", noWarehousingNum
                     )
                     orderDetailList.add(tConsumeDetail)
                 }
             }
-            val tMaterialRequisition = TMaterialRequisition(
+            val tMaterialRequisition = TMaterialRequisition(loginUserBean?.userName,
                 teClaimDate, selectDeptCode, selectDeptName, selectStorehouse,
                 selectStorehouseCode, edClaimant, orderDetailList
             )

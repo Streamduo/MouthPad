@@ -5,8 +5,10 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class LoginUserBean(
+    var id: String? = "",
+    var userId: String? = "",
     //昵称
-    var nickname: String? = "",
+    var userName: String? = "",
     var password: String? = "",
-    var phoneNum: String? = "",
+    var empCode: String? = "",
 ): Parcelable

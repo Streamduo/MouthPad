@@ -7,10 +7,7 @@ package com.mouth.pad.bean
  */
 class TConsumeDetail (
     var id: String? = null,
-    /**
-     * 创建时间
-     */
-    var createTime: String? = null,
+
     /**
      * 材料编码
      */

@@ -163,22 +163,23 @@
                     android:layout_marginTop="@dimen/distance_dp_15">
 
                     <TextView
-                        android:id="@+id/te_reset"
+                        android:id="@+id/te_query"
                         style="@style/CurrentText"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="重置" />
+                        android:text="查询" />
 
                     <TextView
-                        android:id="@+id/te_query"
+                        android:id="@+id/te_reset"
                         style="@style/CurrentText"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/distance_dp_50"
                         android:layout_marginEnd="@dimen/distance_dp_10"
                         android:layout_weight="1"
-                        android:text="查询" />
+                        android:text="重置" />
+
                 </LinearLayout>
             </RelativeLayout>
 
@@ -187,8 +188,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/distance_dp_20"
-                android:text="查询结果"
                 android:layout_marginTop="@dimen/distance_dp_5"
+                android:text="入库信息列表"
                 android:textColor="@color/color_black"
                 android:textSize="@dimen/distance_dp_18"
                 android:visibility="gone"

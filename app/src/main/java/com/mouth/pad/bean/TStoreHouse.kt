@@ -6,7 +6,8 @@ package com.mouth.pad.bean
  * @Description:
  */
 class TStoreHouse (
-
+    //创建人
+    var createBy: String? = null,
     /**
      * 业务类型
      */

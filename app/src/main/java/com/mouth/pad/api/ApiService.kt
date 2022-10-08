@@ -182,6 +182,12 @@ interface ApiService {
     @POST("/tConsume/approval")
     fun approvalConsume(@Body params: MutableMap<String, Any?>): Call<Result<String>>
 
+    /**
+     * 登录
+     */
+    @POST("/sysUser/login")
+    fun login(@Body params: MutableMap<String, Any?>): Call<Result<LoginUserBean>>
+
 }
 
 

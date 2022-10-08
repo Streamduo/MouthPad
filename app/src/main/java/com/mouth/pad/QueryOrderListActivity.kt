@@ -67,8 +67,8 @@ class QueryOrderListActivity : BaseActivity() {
             finish()
         }
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-        ed_buyer.setText(loginUserBean?.nickname)
-        loginUserBean?.nickname?.length?.let { ed_buyer.setSelection(it) }
+        ed_buyer.setText(loginUserBean?.userName)
+        loginUserBean?.userName?.length?.let { ed_buyer.setSelection(it) }
         rv_refresh_list.apply {
             layoutManager = LinearLayoutManager(this@QueryOrderListActivity)
             adapter = orderQueryListAdapter
@@ -134,7 +134,7 @@ class QueryOrderListActivity : BaseActivity() {
             te_search_result.visibility = View.GONE
             orderQueryListAdapter.data.clear()
             orderQueryListAdapter.notifyDataSetChanged()
-            ed_buyer.setText(loginUserBean?.nickname)
+            ed_buyer.setText(loginUserBean?.userName)
             sp_department.setSelection(0)
             sp_isApproval.setSelection(0)
             te_order_date.text = ""
@@ -175,7 +175,7 @@ class QueryOrderListActivity : BaseActivity() {
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalOrder(item.id, position, loginUserBean?.nickname)
+                            approvalOrder(item.id, position, loginUserBean?.userName)
                         }
 
                     })
@@ -216,6 +216,7 @@ class QueryOrderListActivity : BaseActivity() {
                     }
                 } else {
                     if (currentIndex == 1) {
+                        te_search_result.visibility = View.GONE
                         showToast("暂无相关记录")
                         orderQueryListAdapter.data.clear()
                         orderQueryListAdapter.notifyDataSetChanged()

@@ -9,11 +9,6 @@ class TOrderDetail (
     var id: String? = null,
 
     /**
-     * 创建时间
-     */
-    var createTime: String? = null,
-
-    /**
      * 材料编码
      */
     //("材料编码")

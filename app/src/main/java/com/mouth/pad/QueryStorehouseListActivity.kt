@@ -68,8 +68,8 @@ class QueryStorehouseListActivity : BaseActivity() {
             finish()
         }
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-        ed_creater.setText(loginUserBean?.nickname)
-        loginUserBean?.nickname?.length?.let { ed_creater.setSelection(it) }
+        ed_creater.setText(loginUserBean?.userName)
+        loginUserBean?.userName?.length?.let { ed_creater.setSelection(it) }
         rv_refresh_list.apply {
             layoutManager = LinearLayoutManager(this@QueryStorehouseListActivity)
             adapter = warehouseQueryListAdapter
@@ -159,7 +159,7 @@ class QueryStorehouseListActivity : BaseActivity() {
             te_search_result.visibility = View.GONE
             warehouseQueryListAdapter.data.clear()
             warehouseQueryListAdapter.notifyDataSetChanged()
-            ed_creater.setText(loginUserBean?.nickname)
+            ed_creater.setText(loginUserBean?.userName)
             sp_department.setSelection(0)
             sp_business_type.setSelection(0)
             sp_isApproval.setSelection(0)
@@ -201,7 +201,7 @@ class QueryStorehouseListActivity : BaseActivity() {
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalStorehouse(item.id, position, loginUserBean?.nickname)
+                            approvalStorehouse(item.id, position, loginUserBean?.userName)
                         }
 
                     })
@@ -245,6 +245,7 @@ class QueryStorehouseListActivity : BaseActivity() {
                     }
                 } else {
                     if (currentIndex == 1) {
+                        te_search_result.visibility = View.GONE
                         showToast("暂无相关记录")
                         warehouseQueryListAdapter.data.clear()
                         warehouseQueryListAdapter.notifyDataSetChanged()

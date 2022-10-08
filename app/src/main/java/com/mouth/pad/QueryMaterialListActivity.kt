@@ -62,8 +62,8 @@ class QueryMaterialListActivity : BaseActivity() {
             finish()
         }
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
-        ed_creater.setText(loginUserBean?.nickname)
-        loginUserBean?.nickname?.length?.let { ed_creater.setSelection(it) }
+        ed_creater.setText(loginUserBean?.userName)
+        loginUserBean?.userName?.length?.let { ed_creater.setSelection(it) }
         rv_refresh_list.apply {
             layoutManager = LinearLayoutManager(this@QueryMaterialListActivity)
             adapter = materialRequisitionQueryListAdapter
@@ -161,7 +161,7 @@ class QueryMaterialListActivity : BaseActivity() {
             te_search_result.visibility = View.GONE
             materialRequisitionQueryListAdapter.data.clear()
             materialRequisitionQueryListAdapter.notifyDataSetChanged()
-            ed_creater.setText(loginUserBean?.nickname)
+            ed_creater.setText(loginUserBean?.userName)
             te_material_date.text = ""
             sp_department.setSelection(0)
             sp_isConsume.setSelection(0)
@@ -204,7 +204,7 @@ class QueryMaterialListActivity : BaseActivity() {
 
                         override fun onRightClick() {
                             currencyDialog.dialog.dismiss()
-                            approvalConsume(item.id, position, loginUserBean?.nickname)
+                            approvalConsume(item.id, position, loginUserBean?.userName)
                         }
 
                     })
@@ -247,6 +247,7 @@ class QueryMaterialListActivity : BaseActivity() {
                     }
                 } else {
                     if (currentIndex == 1) {
+                        te_search_result.visibility = View.GONE
                         showToast("暂无相关记录")
                         materialRequisitionQueryListAdapter.data.clear()
                         materialRequisitionQueryListAdapter.notifyDataSetChanged()

@@ -23,8 +23,8 @@ class WarehouseQueryListAdapter(layoutResId: Int) :
             holder.setGone(R.id.te_delete, false)
             holder.setGone(R.id.te_check, false)
         } else {
-            holder.setGone(R.id.te_delete, false)
-            holder.setGone(R.id.te_check, false)
+            holder.setGone(R.id.te_delete, true)
+            holder.setGone(R.id.te_check, true)
         }
         item.apply {
             holder.setText(R.id.te_business_type, businessType)
