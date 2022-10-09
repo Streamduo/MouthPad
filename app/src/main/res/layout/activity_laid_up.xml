@@ -22,29 +22,29 @@
             android:id="@+id/te_add"
             style="@style/CurrentText"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="添加" />
 
         <TextView
             android:id="@+id/te_save"
             style="@style/CurrentText"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/distance_dp_20"
+            android:layout_weight="1"
             android:text="保存"
             android:visibility="gone"
             tools:visibility="visible" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/te_query"-->
-<!--            style="@style/CurrentText"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:layout_marginStart="@dimen/distance_dp_20"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="查询"/>-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/te_query"-->
+        <!--            style="@style/CurrentText"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_weight="1"-->
+        <!--            android:layout_marginStart="@dimen/distance_dp_20"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:text="查询"/>-->
 
     </LinearLayout>
 
@@ -288,6 +288,7 @@
                 android:id="@+id/rv_order_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
                 android:overScrollMode="never"
                 android:visibility="gone"
                 tools:visibility="visible" />

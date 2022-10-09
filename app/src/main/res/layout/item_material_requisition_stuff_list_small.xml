@@ -80,7 +80,6 @@
             android:textSize="@dimen/distance_dp_15"
             tools:text="2022.02.23" />
 
-
         <TextView
             android:id="@+id/text_amount"
             android:layout_width="wrap_content"
