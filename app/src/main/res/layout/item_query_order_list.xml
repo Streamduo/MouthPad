@@ -98,35 +98,35 @@
             android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
-        <TextView
-            android:id="@+id/text_order_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_total_order"
-            android:layout_alignStart="@+id/text_delivery_unit"
-            android:layout_alignEnd="@+id/text_delivery_unit"
-            android:layout_marginTop="@dimen/distance_dp_5"
-            android:text="订单状态"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
+<!--        <TextView-->
+<!--            android:id="@+id/text_order_status"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/text_total_order"-->
+<!--            android:layout_alignStart="@+id/text_delivery_unit"-->
+<!--            android:layout_alignEnd="@+id/text_delivery_unit"-->
+<!--            android:layout_marginTop="@dimen/distance_dp_5"-->
+<!--            android:text="订单状态"-->
+<!--            android:textColor="@color/app_text_99"-->
+<!--            android:textSize="@dimen/distance_dp_15" />-->
 
-        <TextView
-            android:id="@+id/te_order_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_total_order"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_5"
-            android:layout_toEndOf="@+id/text_total_order"
-            android:textColor="@color/app_text_33"
-            android:textSize="@dimen/distance_dp_15"
-            tools:text="1" />
+<!--        <TextView-->
+<!--            android:id="@+id/te_order_status"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/text_total_order"-->
+<!--            android:layout_marginStart="@dimen/distance_dp_20"-->
+<!--            android:layout_marginTop="@dimen/distance_dp_5"-->
+<!--            android:layout_toEndOf="@+id/text_total_order"-->
+<!--            android:textColor="@color/app_text_33"-->
+<!--            android:textSize="@dimen/distance_dp_15"-->
+<!--            tools:text="1" />-->
 
         <TextView
             android:id="@+id/text_department"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_order_status"
+            android:layout_below="@+id/text_total_order"
             android:layout_alignStart="@+id/text_delivery_unit"
             android:layout_alignEnd="@+id/text_delivery_unit"
             android:layout_marginTop="@dimen/distance_dp_5"
@@ -138,7 +138,7 @@
             android:id="@+id/te_department"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_order_status"
+            android:layout_below="@+id/text_total_order"
             android:layout_marginStart="@dimen/distance_dp_20"
             android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_department"

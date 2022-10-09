@@ -33,18 +33,18 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/distance_dp_20"
-            android:text="发送"
+            android:text="保存"
             android:visibility="gone"
             tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/te_query"
-            style="@style/CurrentText"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:text="查询" />
+<!--        <TextView-->
+<!--            android:id="@+id/te_query"-->
+<!--            style="@style/CurrentText"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginStart="@dimen/distance_dp_20"-->
+<!--            android:text="查询" />-->
     </LinearLayout>
 
     <TextView

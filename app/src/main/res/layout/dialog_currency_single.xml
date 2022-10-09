@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/distance_dp_45"
+        android:layout_marginEnd="@dimen/distance_dp_45"
+        android:background="@drawable/shape_bg_white_round"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/te_center_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingStart="@dimen/distance_dp_15"
+            android:paddingTop="@dimen/distance_dp_25"
+            android:paddingEnd="@dimen/distance_dp_15"
+            android:paddingBottom="@dimen/distance_dp_25"
+            android:textColor="@color/app_color_030303"
+            android:textSize="@dimen/distance_dp_16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/app_color_e3" />
+
+        <TextView
+            android:id="@+id/te_ascertain"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_45"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/app_color_007AFF"
+            android:textSize="@dimen/distance_dp_17" />
+    </LinearLayout>
+
+</FrameLayout>

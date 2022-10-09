@@ -16,6 +16,7 @@ import com.mouth.pad.bean.TOrderDetail
 import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
 import com.mouth.pad.utils.SpUtil
+import com.mouth.pad.view.CurrencySingleDialog
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_order_manager.*
@@ -47,7 +48,7 @@ class OrderManagerActivity : BaseActivity() {
         title_back.setOnSingleClickListener {
             finish()
         }
-//        tv_subtitle.text = "跟踪管理"
+        tv_subtitle.text = "订单查询"
 //        tv_subtitle.setOnSingleClickListener {
 //            TrackingManagementActivity.launchTrackingManagementActivity(this)
 //        }
@@ -58,6 +59,15 @@ class OrderManagerActivity : BaseActivity() {
         rv_order_list?.apply {
             layoutManager = LinearLayoutManager(this@OrderManagerActivity)
             adapter = orderListAdapter
+        }
+        orderListAdapter.addChildClickViewIds(R.id.iv_delete)
+        orderListAdapter.setOnItemChildClickListener { _, view, position ->
+            when (view.id) {
+                R.id.iv_delete -> {
+                    orderListAdapter.removeAt(position)
+                }
+            }
+
         }
         val departmentCode = resources.getStringArray(R.array.departmentCode)
         val department = resources.getStringArray(R.array.department)
@@ -88,7 +98,7 @@ class OrderManagerActivity : BaseActivity() {
                 getPermissions()
             }
         }
-        te_query.setOnSingleClickListener {
+        tv_subtitle.setOnSingleClickListener {
             QueryOrderListActivity.launchQueryOrderListActivity(this)
         }
         //发送
@@ -118,7 +128,7 @@ class OrderManagerActivity : BaseActivity() {
                 tMaterial.apply {
                     val tOrderDetail = TOrderDetail(
                         id, invCode, invName, invModel,
-                        planPrice, unitName, "1", balanceAmount, noWarehousingNum
+                        planPrice, unitName, stuffNum.toString(), balanceAmount, noWarehousingNum.toString()
                     )
                     orderDetailList.add(tOrderDetail)
                 }
@@ -180,7 +190,6 @@ class OrderManagerActivity : BaseActivity() {
             val bundle = data?.extras
             if (bundle != null) {
                 val result = bundle.getString("result")
-                showLongToast(result)
                 selectByMaterialCode(result)
             }
         }

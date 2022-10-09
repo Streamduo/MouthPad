@@ -259,5 +259,10 @@ class TMaterial (
      * 待入库数量
      */
     //("待入库数量")
-    var noWarehousingNum: String? = null
+    var noWarehousingNum: Int = 0,
+    /**
+     * 材料数量
+     */
+    //("库存数量")
+    var stuffNum: Int = 0,
 )

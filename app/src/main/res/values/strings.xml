@@ -77,10 +77,12 @@
         <item>9</item>
     </string-array>
     <string-array name="isApprovalCode">
+        <item>""</item>
         <item>0</item>
         <item>1</item>
     </string-array>
     <string-array name="isApproval">
+        <item>全部</item>
         <item>否</item>
         <item>是</item>
     </string-array>

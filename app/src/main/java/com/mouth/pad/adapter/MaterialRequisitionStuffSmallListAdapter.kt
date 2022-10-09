@@ -16,7 +16,7 @@ class MaterialRequisitionStuffSmallListAdapter(layoutResId: Int) :
             holder.setText(R.id.te_material, materialName)
             holder.setText(R.id.te_specification, model)
             holder.setText(R.id.te_physical_inventory, realStockNum)
-            holder.setText(R.id.te_quantity, "1")
+            holder.setText(R.id.te_quantity, consumeNum)
             holder.setText(R.id.te_available_stock, realStockNum)
             holder.setText(R.id.te_unit, unit)
         }

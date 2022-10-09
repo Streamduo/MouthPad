@@ -32,17 +32,17 @@ class OrderQueryListAdapter(layoutResId: Int) :
             holder.setText(R.id.te_order_number, orderNo)
             holder.setText(R.id.te_order_date, createTime)
             holder.setText(R.id.te_total_order, orderAmount)
-            when(orderState){
-                "0" -> {
-                    holder.setText(R.id.te_order_status, "未入库")
-                }
-                "1" -> {
-                    holder.setText(R.id.te_order_status, "入库中")
-                }
-                "2" -> {
-                    holder.setText(R.id.te_order_status, "已入库")
-                }
-            }
+//            when(orderState){
+//                "0" -> {
+//                    holder.setText(R.id.te_order_status, "未入库")
+//                }
+//                "1" -> {
+//                    holder.setText(R.id.te_order_status, "入库中")
+//                }
+//                "2" -> {
+//                    holder.setText(R.id.te_order_status, "已入库")
+//                }
+//            }
 
             holder.setText(R.id.te_department, deptName)
             holder.setText(R.id.te_delivery_unit, supplier)

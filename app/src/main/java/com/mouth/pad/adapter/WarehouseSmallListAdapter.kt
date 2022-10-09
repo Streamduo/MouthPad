@@ -15,8 +15,8 @@ class WarehouseSmallListAdapter(layoutResId: Int) :
         item.apply {
             holder.setText(R.id.te_material, materialName)
             holder.setText(R.id.te_specification, model)
-            holder.setText(R.id.te_amount, unitPrice + "元")
-            holder.setText(R.id.te_num, "1")
+            holder.setText(R.id.te_amount, balanceAmount + "元")
+            holder.setText(R.id.te_num, stockNum)
             holder.setText(R.id.te_price, unitPrice + "元")
         }
         holder.setVisible(R.id.view_gray, holder.bindingAdapterPosition != data.size - 1)

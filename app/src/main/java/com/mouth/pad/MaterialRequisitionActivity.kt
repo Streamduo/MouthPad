@@ -21,6 +21,7 @@ import com.mouth.pad.bean.TOrderDetail
 import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
 import com.mouth.pad.utils.SpUtil
+import com.mouth.pad.view.CurrencySingleDialog
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_material_requisition.*
@@ -72,6 +73,15 @@ class MaterialRequisitionActivity : BaseActivity() {
             layoutManager = LinearLayoutManager(this@MaterialRequisitionActivity)
             adapter = materialRequisitionStuffListAdapter
         }
+        materialRequisitionStuffListAdapter.addChildClickViewIds(R.id.iv_delete)
+        materialRequisitionStuffListAdapter.setOnItemChildClickListener { _, view, position ->
+            when (view.id) {
+                R.id.iv_delete -> {
+                    materialRequisitionStuffListAdapter.removeAt(position)
+                }
+            }
+
+        }
         val storehouseCode = resources.getStringArray(R.array.storehouseCode)
         val storehouse = resources.getStringArray(R.array.storehouse)
         sp_storehouse.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -121,7 +131,11 @@ class MaterialRequisitionActivity : BaseActivity() {
                 te_tips.visibility = View.VISIBLE
                 te_send.visibility = View.VISIBLE
             } else {
-                getPermissions()
+                if (selectStorehouseCode.isNotEmpty()) {
+                    getPermissions()
+                } else {
+                    showLongToast("请先选择仓库")
+                }
             }
         }
         //发送
@@ -154,21 +168,27 @@ class MaterialRequisitionActivity : BaseActivity() {
             for (tMaterial in data) {
                 tMaterial.apply {
                     val tConsumeDetail = TConsumeDetail(
-                        id,  invCode, invName, invModel,
-                        planPrice, unitName, stockNum, "1", noWarehousingNum
+                        id,
+                        materialCode,
+                        materialName,
+                        model,
+                        unitPrice,
+                        unit,
+                        stockNum.toString(),
+                        stuffNum.toString()
                     )
                     orderDetailList.add(tConsumeDetail)
                 }
             }
-            val tMaterialRequisition = TMaterialRequisition(loginUserBean?.userName,
-                teClaimDate, selectDeptCode, selectDeptName, selectStorehouse,
-                selectStorehouseCode, edClaimant, orderDetailList
+            val tMaterialRequisition = TMaterialRequisition(
+                loginUserBean?.userName,
+                teClaimDate, selectDeptCode, selectDeptName, selectStorehouseCode,
+                selectStorehouse, edClaimant, orderDetailList
             )
             val gson = Gson()
             val json = gson.toJson(tMaterialRequisition)
             Logger.d(json)
             insertTMaterialRequisition(json)
-
         }
     }
 
@@ -221,20 +241,27 @@ class MaterialRequisitionActivity : BaseActivity() {
             val bundle = data?.extras
             if (bundle != null) {
                 val result = bundle.getString("result")
-                showLongToast(result)
-                selectByMaterialCode(result)
+                selectByMaterialCode(result, selectStorehouseCode)
             }
         }
     }
 
     ////根据材料编号查询-材料基本信息
-    private fun selectByMaterialCode(materialCode: String?) {
-        allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
+    private fun selectByMaterialCode(materialCode: String?, warehouseCode: String?) {
+        allNetViewModel.selectStoreInfo(materialCode, warehouseCode).observe(this, {
             if (it.isOk()) {
                 it.data?.apply {
-                    te_tips.visibility = View.GONE
-                    rv_order_list.visibility = View.VISIBLE
-                    materialRequisitionStuffListAdapter.addData(this)
+                    if (stockNum > 0) {
+                        te_tips.visibility = View.GONE
+                        rv_order_list.visibility = View.VISIBLE
+                        materialRequisitionStuffListAdapter.addData(this)
+                    } else {
+                        val currencySingleDialog = CurrencySingleDialog()
+                        currencySingleDialog.showDialog(
+                            this@MaterialRequisitionActivity,
+                            "该材料库存不足", true
+                        )
+                    }
                 }
             } else {
                 it.msg?.let { msg ->

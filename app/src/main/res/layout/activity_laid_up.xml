@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".LaidUpActivity">
 
-    <include layout="@layout/layout_title" />
+    <include layout="@layout/layout_title_subtitle" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,14 +37,14 @@
             android:visibility="gone"
             tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/te_query"
-            style="@style/CurrentText"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_height="match_parent"
-            android:text="查询"/>
+<!--        <TextView-->
+<!--            android:id="@+id/te_query"-->
+<!--            style="@style/CurrentText"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginStart="@dimen/distance_dp_20"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="查询"/>-->
 
     </LinearLayout>
 

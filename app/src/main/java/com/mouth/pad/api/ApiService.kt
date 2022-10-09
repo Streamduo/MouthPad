@@ -68,6 +68,13 @@ interface ApiService {
     fun selectByMaterialCode(@Query("materialCode") materialCode: String?): Call<Result<TMaterial>>
 
     /**
+     * 查询已入库材料
+     */
+    @GET("/tReceiptStore/selectStoreInfo")
+    fun selectStoreInfo(@Query("materialCode") materialCode: String?,
+                        @Query("warehouseCode") warehouseCode: String?): Call<Result<TMaterialStorehouseBean>>
+
+    /**
      * 新增订单
      */
     @POST("/tOrder/insert")

@@ -160,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/text_commodity_all_price"
             android:layout_alignEnd="@+id/text_commodity_all_price"
-            android:text="材料"
+            android:text="材料名称"
             android:textColor="@color/app_text_99"
             android:textSize="@dimen/distance_dp_12" />
 

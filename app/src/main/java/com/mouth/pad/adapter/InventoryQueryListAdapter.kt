@@ -16,9 +16,9 @@ class InventoryQueryListAdapter(layoutResId: Int) : BaseQuickAdapter<TInventoryQ
             holder.setText(R.id.te_material_code, materialCode)
             holder.setText(R.id.te_material, materialName)
             holder.setText(R.id.te_specifications, model)
-            holder.setText(R.id.te_price, unitPrice)
+            holder.setText(R.id.te_price, unitPrice+ "元")
             holder.setText(R.id.te_balance_quantity, stockNum)
-            holder.setText(R.id.te_balance_amount, unitPrice)
+            holder.setText(R.id.te_balance_amount, unitPrice+ "元")
             holder.setText(R.id.te_measurement, unit)
             holder.setText(R.id.te_manufacturer, factoryName)
         }

@@ -77,6 +77,15 @@ class AllNetViewModel {
         return liveDatas
     }
 
+    //查询已入库材料
+    fun selectStoreInfo(materialCode: String?, warehouseCode: String?):
+            MutableLiveData<com.mouth.pad.api.Result<TMaterialStorehouseBean>> {
+        val liveDatas = MutableLiveData<com.mouth.pad.api.Result<TMaterialStorehouseBean>>()
+        ApiService.get().selectStoreInfo(materialCode, warehouseCode)
+            .enqueue(LiveDataCallback(liveDatas))
+        return liveDatas
+    }
+
     //审核订单
     fun approvalOrder(
         id: String?,

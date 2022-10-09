@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/text_unit_price"
             android:layout_alignEnd="@+id/text_unit_price"
-            android:text="材料"
+            android:text="材料名称"
             android:textColor="@color/app_text_99"
             android:textSize="@dimen/distance_dp_15" />
 
@@ -64,7 +64,7 @@
             android:layout_alignEnd="@+id/text_unit_price"
             android:layout_marginTop="@dimen/distance_dp_5"
             android:gravity="start"
-            android:text="数量"
+            android:text="入库数量"
             android:textColor="@color/app_text_99"
             android:textSize="@dimen/distance_dp_15" />
 
@@ -114,7 +114,7 @@
             android:layout_alignEnd="@+id/text_unit_price"
             android:layout_marginTop="@dimen/distance_dp_5"
             android:gravity="start"
-            android:text="金额"
+            android:text="结存金额"
             android:textColor="@color/app_text_99"
             android:textSize="@dimen/distance_dp_15" />
 

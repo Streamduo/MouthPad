@@ -21,10 +21,11 @@ import com.mouth.pad.bean.TStoreHouse
 import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
 import com.mouth.pad.utils.SpUtil
+import com.mouth.pad.view.CurrencySingleDialog
 import com.permissionx.guolindev.PermissionX
 import com.xys.libzxing.zxing.activity.CaptureActivity
 import kotlinx.android.synthetic.main.activity_laid_up.*
-import kotlinx.android.synthetic.main.layout_title.*
+import kotlinx.android.synthetic.main.layout_title_subtitle.*
 
 //物资入库
 class LaidUpActivity : BaseActivity() {
@@ -64,9 +65,19 @@ class LaidUpActivity : BaseActivity() {
         title_back.setOnSingleClickListener {
             finish()
         }
+        tv_subtitle.text = "入库查询"
         rv_order_list?.apply {
             layoutManager = LinearLayoutManager(this@LaidUpActivity)
             adapter = warehouseStuffListAdapter
+        }
+        warehouseStuffListAdapter.addChildClickViewIds(R.id.iv_delete)
+        warehouseStuffListAdapter.setOnItemChildClickListener { _, view, position ->
+            when (view.id) {
+                R.id.iv_delete -> {
+                    warehouseStuffListAdapter.removeAt(position)
+                }
+            }
+
         }
         loginUserBean = SpUtil.decodeParcelable(Const.LOGIN_USER_BEAN, LoginUserBean::class.java)
         ed_prepared.setText(loginUserBean?.userName)
@@ -141,7 +152,7 @@ class LaidUpActivity : BaseActivity() {
             }
         }
 
-        te_query.setOnSingleClickListener {
+        tv_subtitle.setOnSingleClickListener {
             QueryStorehouseListActivity.launchQueryStorehouseListActivity(this)
         }
         //保存
@@ -176,15 +187,22 @@ class LaidUpActivity : BaseActivity() {
                 return@setOnSingleClickListener
             }
             if (data.isNullOrEmpty()) {
-                showToast("请添加商品")
+                showToast("请添加材料")
                 return@setOnSingleClickListener
             }
             val receiptDetailList: MutableList<TReceiptDetail> = ArrayList()
             for (tMaterial in data) {
                 tMaterial.apply {
                     val tReceiptDetail = TReceiptDetail(
-                        id, invCode, invName, invModel,
-                        planPrice, unitName, "1", balanceAmount, noWarehousingNum
+                        id,
+                        invCode,
+                        invName,
+                        invModel,
+                        planPrice,
+                        unitName,
+                        stuffNum.toString(),
+                        balanceAmount,
+                        noWarehousingNum.toString()
                     )
                     receiptDetailList.add(tReceiptDetail)
                 }
@@ -216,7 +234,7 @@ class LaidUpActivity : BaseActivity() {
         allNetViewModel.insertStorehouse(storehouseInfo).observe(this, {
             if (it.isOk()) {
                 showToast("入库成功")
-                te_add.text = "新增"
+                te_add.text = "添加"
                 sp_department.setSelection(0)
                 sp_storehouse.setSelection(0)
                 te_delivery_unit.setText("")
@@ -260,7 +278,6 @@ class LaidUpActivity : BaseActivity() {
             val bundle = data?.extras
             if (bundle != null) {
                 val result = bundle.getString("result")
-                showLongToast(result)
                 selectByMaterialCode(result)
             }
         }
@@ -271,9 +288,15 @@ class LaidUpActivity : BaseActivity() {
         allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
             if (it.isOk()) {
                 it.data?.apply {
-                    te_tips.visibility = View.GONE
-                    rv_order_list.visibility = View.VISIBLE
-                    warehouseStuffListAdapter.addData(this)
+                    if (noWarehousingNum > 0) {
+                        te_tips.visibility = View.GONE
+                        rv_order_list.visibility = View.VISIBLE
+                        warehouseStuffListAdapter.addData(this)
+                    } else {
+                        val currencySingleDialog = CurrencySingleDialog()
+                        currencySingleDialog.showDialog(this@LaidUpActivity,
+                            "暂无待入库材料",true)
+                    }
                 }
             } else {
                 it.msg?.let { msg ->

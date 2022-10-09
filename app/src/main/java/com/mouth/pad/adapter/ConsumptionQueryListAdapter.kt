@@ -17,7 +17,7 @@ class ConsumptionQueryListAdapter(layoutResId: Int) : BaseQuickAdapter<TConsumpt
             holder.setText(R.id.te_specification, model)
             holder.setText(R.id.te_picking_department, deptName)
             holder.setText(R.id.te_total_size, consumeNum)
-            holder.setText(R.id.te_amount, unitPrice)
+            holder.setText(R.id.te_amount, unitPrice+ "元")
             holder.setText(R.id.te_out_date, createTime)
         }
     }
