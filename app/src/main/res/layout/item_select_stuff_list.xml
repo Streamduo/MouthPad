@@ -38,14 +38,6 @@
             android:textSize="@dimen/distance_dp_15"
             tools:text="1" />
 
-        <ImageView
-            android:id="@+id/iv_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:padding="@dimen/distance_dp_5"
-            android:src="@mipmap/icon_red_cha" />
-
         <TextView
             android:id="@+id/text_commodity_name"
             android:layout_width="wrap_content"
@@ -120,59 +112,13 @@
             tools:text="1" />
 
         <TextView
-            android:id="@+id/text_ticket_method"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/text_commodity_all_price"
-            android:layout_alignStart="@+id/text_unit_price"
-            android:layout_alignEnd="@+id/text_unit_price"
-            android:layout_marginTop="@dimen/distance_dp_8"
-            android:gravity="start"
-            android:text="数量"
-            android:textColor="@color/app_text_99"
-            android:textSize="@dimen/distance_dp_15" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/distance_dp_30"
-            android:layout_below="@+id/text_commodity_all_price"
-            android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_5"
-            android:layout_toEndOf="@+id/text_ticket_method"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_reduce"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingEnd="@dimen/distance_dp_20"
-                android:src="@mipmap/ic_reduce" />
-
-            <TextView
-                android:id="@+id/te_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/app_text_33"
-                android:textSize="@dimen/distance_dp_15"
-                android:text="1" />
-
-            <ImageView
-                android:id="@+id/iv_add"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="@dimen/distance_dp_20"
-                android:paddingEnd="@dimen/distance_dp_20"
-                android:src="@mipmap/ic_add" />
-        </LinearLayout>
-
-        <TextView
             android:id="@+id/text_ticket_station"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_ticket_method"
+            android:layout_below="@+id/text_commodity_all_price"
             android:layout_alignStart="@+id/text_unit_price"
             android:layout_alignEnd="@+id/text_unit_price"
-            android:layout_marginTop="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_5"
             android:gravity="start"
             android:text="材料单价"
             android:textColor="@color/app_text_99"
@@ -182,9 +128,9 @@
             android:id="@+id/te_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_ticket_method"
+            android:layout_below="@+id/text_commodity_all_price"
             android:layout_marginStart="@dimen/distance_dp_20"
-            android:layout_marginTop="@dimen/distance_dp_10"
+            android:layout_marginTop="@dimen/distance_dp_5"
             android:layout_toEndOf="@+id/text_ticket_station"
             android:textColor="@color/app_text_33"
             android:textSize="@dimen/distance_dp_15"
@@ -215,5 +161,11 @@
             android:textSize="@dimen/distance_dp_15"
             tools:text="1号线西单站" />
 
+        <ImageView
+            android:layout_width="@dimen/distance_dp_10"
+            android:layout_height="@dimen/distance_dp_15"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/icon_gray_return" />
     </RelativeLayout>
 </FrameLayout>

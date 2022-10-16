@@ -88,6 +88,7 @@
                         android:paddingStart="@dimen/distance_dp_8"
                         android:textColor="@color/app_text_33"
                         android:textSize="@dimen/distance_dp_15" />
+
                     <TextView
                         android:id="@+id/te_sCode"
                         style="@style/CurrentText"
@@ -97,6 +98,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="@dimen/distance_dp_10"
                         android:text="扫码" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/distance_dp_35"

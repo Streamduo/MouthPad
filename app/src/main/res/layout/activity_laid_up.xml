@@ -167,7 +167,7 @@
 
                 <EditText
                     android:id="@+id/te_delivery_unit"
-                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_commodity_all_price"
                     android:layout_marginStart="@dimen/distance_dp_20"
@@ -192,7 +192,7 @@
 
                 <TextView
                     android:id="@+id/te_invoice_date"
-                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_ticket_station"
                     android:layout_marginStart="@dimen/distance_dp_20"
@@ -219,7 +219,7 @@
 
                 <EditText
                     android:id="@+id/te_receipt_number"
-                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/text_ticket_time"
                     android:layout_marginStart="@dimen/distance_dp_20"
@@ -247,7 +247,7 @@
 
                 <EditText
                     android:id="@+id/ed_prepared"
-                    android:layout_width="@dimen/distance_dp_200"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/te_receipt_number"
                     android:layout_marginStart="@dimen/distance_dp_20"

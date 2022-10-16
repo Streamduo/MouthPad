@@ -108,7 +108,7 @@
 
                 <TextView
                     android:id="@+id/te_claim_date"
-                    android:layout_width="@dimen/distance_dp_150"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/te_storehouse"
                     android:layout_marginStart="@dimen/distance_dp_10"
@@ -153,7 +153,7 @@
 
                 <EditText
                     android:id="@+id/ed_claimant"
-                    android:layout_width="@dimen/distance_dp_150"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/distance_dp_30"
                     android:layout_below="@+id/te_warehouse"
                     android:layout_marginStart="@dimen/distance_dp_10"

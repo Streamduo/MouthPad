@@ -8,11 +8,13 @@ import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bmncc.pis.ylct.utils.setOnSingleClickListener
 import com.google.gson.Gson
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.mouth.pad.adapter.OrderStuffListAdapter
 import com.mouth.pad.base.BaseActivity
 import com.mouth.pad.bean.LoginUserBean
 import com.mouth.pad.bean.TOrder
 import com.mouth.pad.bean.TOrderDetail
+import com.mouth.pad.bean.event.SelectStuffEvent
 import com.mouth.pad.utils.Const
 import com.mouth.pad.utils.Logger
 import com.mouth.pad.utils.SpUtil
@@ -86,21 +88,23 @@ class OrderManagerActivity : BaseActivity() {
         }
 
         te_add.setOnSingleClickListener {
-            val text = te_add.text
-            if (text == "添加") {
-                te_add.text = "扫码"
-                te_head.visibility = View.VISIBLE
-                rl_haed.visibility = View.VISIBLE
-                te_search_result.visibility = View.VISIBLE
-                te_tips.visibility = View.VISIBLE
-                te_send.visibility = View.VISIBLE
-            } else {
-                getPermissions()
-            }
+            te_head.visibility = View.VISIBLE
+            rl_haed.visibility = View.VISIBLE
+            te_search_result.visibility = View.VISIBLE
+            te_select_stuff.visibility = View.VISIBLE
+            te_send.visibility = View.VISIBLE
+            rv_order_list.visibility = View.VISIBLE
         }
         tv_subtitle.setOnSingleClickListener {
             QueryOrderListActivity.launchQueryOrderListActivity(this)
         }
+        te_select_stuff.setOnSingleClickListener {
+            SelectStuffActivity.launchSelectStuffActivity(this)
+        }
+        LiveEventBus.get("SelectStuffEvent",SelectStuffEvent::class.java).observe(this,{
+            val tMaterial = it.tMaterial
+            tMaterial?.let { it1 -> orderListAdapter.addData(it1) }
+        })
         //发送
         te_send.setOnSingleClickListener {
             val data = orderListAdapter.data
@@ -127,8 +131,15 @@ class OrderManagerActivity : BaseActivity() {
             for (tMaterial in data) {
                 tMaterial.apply {
                     val tOrderDetail = TOrderDetail(
-                        id, invCode, invName, invModel,
-                        planPrice, unitName, stuffNum.toString(), balanceAmount, noWarehousingNum.toString()
+                        id,
+                        invCode,
+                        invName,
+                        invModel,
+                        planPrice,
+                        unitName,
+                        stuffNum.toString(),
+                        balanceAmount,
+                        noWarehousingNum.toString()
                     )
                     orderDetailList.add(tOrderDetail)
                 }
@@ -152,62 +163,17 @@ class OrderManagerActivity : BaseActivity() {
         allNetViewModel.insertOrder(orderInfo).observe(this, {
             if (it.isOk()) {
                 showToast("订单提交成功")
-                te_add.text = "添加"
                 sp_department.setSelection(0)
                 ed_delivery_unit.setText("")
                 ed_claimant.setText(loginUserBean?.userName)
                 te_head.visibility = View.GONE
                 rl_haed.visibility = View.GONE
                 te_send.visibility = View.GONE
+                te_select_stuff.visibility = View.GONE
                 te_search_result.visibility = View.GONE
                 rv_order_list.visibility = View.GONE
                 orderListAdapter.data.clear()
                 orderListAdapter.notifyDataSetChanged()
-            }
-        })
-    }
-
-    private fun getPermissions() {
-        PermissionX.init(this)
-            .permissions(
-                Manifest.permission.CAMERA
-            )
-            .request { allGranted, _, _ ->
-                //所有权限都允许
-                if (allGranted) {
-                    goCapture()
-                }
-            }
-    }
-
-    private fun goCapture() {
-        startActivityForResult(Intent(this, CaptureActivity::class.java), 10)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 10 && resultCode == RESULT_OK) {
-            val bundle = data?.extras
-            if (bundle != null) {
-                val result = bundle.getString("result")
-                selectByMaterialCode(result)
-            }
-        }
-    }
-
-    ////根据材料编号查询-材料基本信息
-    private fun selectByMaterialCode(materialCode: String?) {
-        allNetViewModel.selectByMaterialCode(materialCode).observe(this, {
-            if (it.isOk()) {
-                it.data?.apply {
-                    te_tips.visibility = View.GONE
-                    rv_order_list.visibility = View.VISIBLE
-                    orderListAdapter.addData(this)
-                }
-            } else {
-                it.msg?.let { msg ->
-                    showToast(msg)
-                }
             }
         })
     }

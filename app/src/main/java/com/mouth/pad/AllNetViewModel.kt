@@ -77,6 +77,18 @@ class AllNetViewModel {
         return liveDatas
     }
 
+    //模糊查询材料（分页）
+    fun getSelectMaterialPage(
+        invName: String,
+        pageNum: Int,
+        pageSize: Int
+    ): MutableLiveData<com.mouth.pad.api.Result<TSelectMaterialPageListBean>> {
+        val liveDatas = MutableLiveData<com.mouth.pad.api.Result<TSelectMaterialPageListBean>>()
+        ApiService.get().getSelectMaterialPage(invName, pageNum, pageSize)
+            .enqueue(LiveDataCallback(liveDatas))
+        return liveDatas
+    }
+
     //查询已入库材料
     fun selectStoreInfo(materialCode: String?, warehouseCode: String?):
             MutableLiveData<com.mouth.pad.api.Result<TMaterialStorehouseBean>> {

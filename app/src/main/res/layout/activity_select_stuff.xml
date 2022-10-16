@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_text_f8"
+    android:orientation="vertical"
+    tools:context=".SelectStuffActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/distance_dp_60"
+        android:background="@color/color_1876FF">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/distance_dp_15"
+            android:paddingEnd="@dimen/distance_dp_20"
+            android:src="@drawable/icon_white_back" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/distance_dp_40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/distance_dp_15"
+            android:layout_toStartOf="@+id/te_search"
+            android:layout_toEndOf="@+id/iv_back"
+            android:background="@drawable/shape_bg_white_round">
+
+            <ImageView
+                android:id="@+id/img_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/distance_dp_10"
+                android:layout_marginEnd="@dimen/distance_dp_5"
+                android:src="@mipmap/icon_search" />
+
+            <EditText
+                android:id="@+id/ed_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/img_search"
+                android:background="@null"
+                android:hint="请输入材料名称"
+                android:textColor="@color/app_text_33"
+                android:textSize="@dimen/distance_dp_15" />
+
+            <ImageView
+                android:id="@+id/img_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:paddingStart="@dimen/distance_dp_10"
+                android:paddingEnd="@dimen/distance_dp_10"
+                android:src="@mipmap/icon_gray_clean"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/te_search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:paddingEnd="@dimen/distance_dp_10"
+            android:text="搜索"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/distance_dp_18" />
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_refresh_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/distance_dp_10"
+            android:overScrollMode="never" />
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

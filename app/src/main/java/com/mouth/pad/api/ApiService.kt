@@ -68,6 +68,16 @@ interface ApiService {
     fun selectByMaterialCode(@Query("materialCode") materialCode: String?): Call<Result<TMaterial>>
 
     /**
+     * 模糊查询材料（分页）
+     */
+    @GET("/tMaterial/page")
+    fun getSelectMaterialPage(
+        @Query("invName") invName: String,
+        @Query("pageNum") pageNum: Int,
+        @Query("pageSize") pageSize: Int
+    ): Call<Result<TSelectMaterialPageListBean>>
+
+    /**
      * 查询已入库材料
      */
     @GET("/tReceiptStore/selectStoreInfo")

@@ -60,6 +60,9 @@
         <activity
             android:name=".QueryMaterialListActivity"
             android:exported="true" />
+        <activity
+            android:name=".SelectStuffActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.mouth.pad.utils.HttpsGlideModule"

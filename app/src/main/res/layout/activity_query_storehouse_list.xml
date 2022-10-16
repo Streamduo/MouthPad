@@ -126,7 +126,7 @@
 
                     <EditText
                         android:id="@+id/ed_creater"
-                        android:layout_width="@dimen/distance_dp_200"
+                        android:layout_width="match_parent"
                         android:layout_height="@dimen/distance_dp_30"
                         android:layout_below="@+id/text_ticket_time"
                         android:layout_marginStart="@dimen/distance_dp_20"
